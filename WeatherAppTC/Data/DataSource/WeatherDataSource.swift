@@ -6,3 +6,23 @@
 //
 
 import Foundation
+
+class WeatherDataSource {
+    let networkService = NetworkService(baseURL: Constants.API.Endpoints.temperature.rawValue)
+
+    func fetchData() {
+        let cancellable = networkService.fetchData(path: "/data")
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    print("DEBUG: Success ✅")
+                    break
+                case .failure(let error):
+                    print("Error: \(error)")
+                }
+            }, receiveValue: { (data: Temperature) in
+                // Handle received data
+                print("Received data: \(data)")
+            })
+    }
+}
