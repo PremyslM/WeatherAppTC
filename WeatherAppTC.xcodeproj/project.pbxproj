@@ -21,6 +21,7 @@
 		781591662B590DFB00F0ECC8 /* WeatherDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781591652B590DFB00F0ECC8 /* WeatherDataSource.swift */; };
 		7815916A2B590E2A00F0ECC8 /* WeatherAPIEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781591692B590E2A00F0ECC8 /* WeatherAPIEntity.swift */; };
 		7815916D2B590E4A00F0ECC8 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7815916C2B590E4A00F0ECC8 /* NetworkService.swift */; };
+		78766F9C2B595C2700BD6A8E /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78766F9B2B595C2700BD6A8E /* NetworkError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		781591652B590DFB00F0ECC8 /* WeatherDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataSource.swift; sourceTree = "<group>"; };
 		781591692B590E2A00F0ECC8 /* WeatherAPIEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPIEntity.swift; sourceTree = "<group>"; };
 		7815916C2B590E4A00F0ECC8 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		78766F9B2B595C2700BD6A8E /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,9 +249,26 @@
 		7815916B2B590E3D00F0ECC8 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				7815916C2B590E4A00F0ECC8 /* NetworkService.swift */,
+				78766F9A2B595C1500BD6A8E /* API */,
+				78766F992B595C0300BD6A8E /* Error */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		78766F992B595C0300BD6A8E /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				78766F9B2B595C2700BD6A8E /* NetworkError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		78766F9A2B595C1500BD6A8E /* API */ = {
+			isa = PBXGroup;
+			children = (
+				7815916C2B590E4A00F0ECC8 /* NetworkService.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -391,6 +410,7 @@
 				7815915E2B590C2000F0ECC8 /* Location.swift in Sources */,
 				781591602B590C3200F0ECC8 /* Country.swift in Sources */,
 				7815915C2B587A9A00F0ECC8 /* WeatherPageViewModel.swift in Sources */,
+				78766F9C2B595C2700BD6A8E /* NetworkError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
