@@ -10,6 +10,7 @@ import SwiftUI
 struct WeatherPageView: View {
     var body: some View {
         ZStack {
+            Color.darkBg
             VStack {
                 DynamicGradientWeatherContainer(content: WeatherDataView())
                 
@@ -42,7 +43,7 @@ struct DynamicGradientWeatherContainer<Content: View>: View {
                 topTrailing: 0.0),
                                    style: .continuous)
         )
-        .shadow(color: .blue.opacity(0.6), radius: 20)
+        .shadow(color: .blue.opacity(0.8), radius: 50)
     }
 }
 
@@ -73,8 +74,7 @@ struct WeatherDataView: View {
                 Rectangle()
                     .fill(.white.opacity(0.6))
                     .frame(height: 1)
-                    
-                    .padding(.vertical, 50)
+                    .padding(.top, 50)
                 
                 HStack(spacing: 40) {
                     ForEach(0..<3) {_ in
@@ -91,8 +91,8 @@ struct WeatherDataView: View {
                         .foregroundStyle(.white)
                     }
                 }
+                .padding(.vertical, 30)
             }
-            Spacer(minLength: 12)
         }
         .padding(.horizontal)
     }
