@@ -11,7 +11,7 @@ struct WeatherPageView: View {
     var body: some View {
         ZStack {
             VStack {
-                DynamicGradientWeatherContainer()
+                DynamicGradientWeatherContainer(content: )
                 
                 Spacer()
             }
@@ -24,10 +24,14 @@ struct WeatherPageView: View {
     WeatherPageView()
 }
 
-struct DynamicGradientWeatherContainer: View {
+struct DynamicGradientWeatherContainer<Content: View>: View {
+    let content: Content
+    
     var body: some View {
         ZStack {
             LinearGradient(gradient: Gradient(colors: [Color(.systemBlue), Color(.systemBlue).opacity(0.5)]), startPoint: .topLeading, endPoint: .bottomTrailing)
+            
+            content
         }
         .frame(height: 600)
         .clipShape(
