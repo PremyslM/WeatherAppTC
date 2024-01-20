@@ -12,9 +12,11 @@ final class Constants {
     
     struct API {
         enum Endpoints: String {
-            case location = "loc" // TODO:
+            case location = "http://dataservice.accuweather.com/"
             case temperature = "temp" // TODO:
         }
+        
+        static let API_KEY: String = "VZQsYeGkGEU9FTGPUTCQ39pbVxTO3fiQ"
     }
     
     

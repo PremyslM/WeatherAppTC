@@ -17,13 +17,13 @@ struct Location: Codable {
     var administrativeArea: AdministrativeArea
 
     enum CodingKeys: String, CodingKey {
-        case version
-        case key
-        case type
-        case rank
+        case version = "Version"
+        case key = "Key"
+        case type = "Type"
+        case rank = "Rank"
         case localizedName = "LocalizedName"
-        case country
-        case administrativeArea
+        case country = "Country"
+        case administrativeArea = "AdministrativeArea"
     }
 }
 

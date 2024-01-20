@@ -8,12 +8,17 @@
 import SwiftUI
 
 struct WeatherPageView: View {
+    let mng = WeatherDataSource()
+    
     var body: some View {
         VStack {
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundStyle(.tint)
             Text("Hello, world!")
+        }
+        .onAppear {
+            mng.getData()
         }
         .padding()
     }
