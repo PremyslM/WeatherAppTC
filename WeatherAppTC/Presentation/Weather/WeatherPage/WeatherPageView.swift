@@ -9,16 +9,35 @@ import SwiftUI
 
 struct WeatherPageView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        ZStack {
+            VStack {
+                DynamicGradientWeatherContainer()
+                
+                Spacer()
+            }
         }
-        .padding()
+        .ignoresSafeArea()
     }
 }
 
 #Preview {
     WeatherPageView()
+}
+
+struct DynamicGradientWeatherContainer: View {
+    var body: some View {
+        ZStack {
+            LinearGradient(gradient: Gradient(colors: [Color(.systemBlue), Color(.systemBlue).opacity(0.5)]), startPoint: .topLeading, endPoint: .bottomTrailing)
+        }
+        .frame(height: 600)
+        .clipShape(
+            UnevenRoundedRectangle(cornerRadii: .init(
+                topLeading: 0.0,
+                bottomLeading: 75.0,
+                bottomTrailing: 75.0,
+                topTrailing: 0.0),
+                                   style: .continuous)
+        )
+        .shadow(color: .blue.opacity(0.6), radius: 20)
+    }
 }

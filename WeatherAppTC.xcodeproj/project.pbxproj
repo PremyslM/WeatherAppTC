@@ -233,6 +233,7 @@
 		781591592B587A8800F0ECC8 /* WeatherPage */ = {
 			isa = PBXGroup;
 			children = (
+				78C6180E2B5BDCCD00C7624F /* Components */,
 				781591282B5878B600F0ECC8 /* WeatherPageView.swift */,
 				7815915B2B587A9A00F0ECC8 /* WeatherPageViewModel.swift */,
 			);
@@ -308,6 +309,13 @@
 				78766FA82B595DF900BD6A8E /* Constants.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		78C6180E2B5BDCCD00C7624F /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
