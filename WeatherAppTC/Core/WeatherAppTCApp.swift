@@ -11,7 +11,10 @@ import SwiftUI
 struct WeatherAppTCApp: App {
     var body: some Scene {
         WindowGroup {
-            WeatherPageView()
+            ZStack {
+                Color.darkBg                
+                WeatherPageView()
+            }
         }
     }
 }

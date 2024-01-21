@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct WeatherPageView: View {
+    @State private var isSearchBtnClicked: Bool = false
+    
     var body: some View {
         ZStack {
             Color.darkBg
             VStack {
                 DynamicGradientWeatherContainer(
-                    content: WeatherDataView(),
+                    content: WeatherDataView(onSearchBtnClick: searchButtonTapped),
                     cornerRadius: .init(
                         topLeading: 0.0,
                         bottomLeading: 75.0,
@@ -28,6 +30,13 @@ struct WeatherPageView: View {
             }
         }
         .ignoresSafeArea()
+        .sheet(isPresented: $isSearchBtnClicked, content: {
+            SearchPageView()
+        })
+    }
+    
+    private func searchButtonTapped() {
+        self.isSearchBtnClicked.toggle()
     }
 }
 
@@ -57,12 +66,14 @@ struct DynamicGradientWeatherContainer<Content: View>: View {
 
 
 struct WeatherDataView: View {
+    let onSearchBtnClick: () -> Void
+    
     var body: some View {
         VStack {
             Spacer()
             
             Button {
-                // TODO: Search for city [ with some animations ;D ]
+                self.onSearchBtnClick()
             } label: {
                 HStack {
                     Image(systemName: "magnifyingglass")
