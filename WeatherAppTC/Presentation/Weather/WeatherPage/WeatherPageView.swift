@@ -12,7 +12,15 @@ struct WeatherPageView: View {
         ZStack {
             Color.darkBg
             VStack {
-                DynamicGradientWeatherContainer(content: WeatherDataView())
+                DynamicGradientWeatherContainer(
+                    content: WeatherDataView(),
+                    cornerRadius: .init(
+                        topLeading: 0.0,
+                        bottomLeading: 75.0,
+                        bottomTrailing: 75.0,
+                        topTrailing: 0.0
+                    )
+                )
                 
                 WeatherDateView()
                 
@@ -30,6 +38,8 @@ struct WeatherPageView: View {
 struct DynamicGradientWeatherContainer<Content: View>: View {
     let content: Content
     
+    let cornerRadius: RectangleCornerRadii
+    
     var body: some View {
         ZStack {
             LinearGradient(gradient: Gradient(colors: [Color(.systemBlue), Color(.systemBlue).opacity(0.5)]), startPoint: .topLeading, endPoint: .bottomTrailing)
@@ -38,11 +48,7 @@ struct DynamicGradientWeatherContainer<Content: View>: View {
         }
         .frame(maxHeight: 550)
         .clipShape(
-            UnevenRoundedRectangle(cornerRadii: .init(
-                topLeading: 0.0,
-                bottomLeading: 75.0,
-                bottomTrailing: 75.0,
-                topTrailing: 0.0),
+            UnevenRoundedRectangle(cornerRadii: cornerRadius,
                                    style: .continuous)
         )
         .shadow(color: .blue.opacity(0.8), radius: 50)
