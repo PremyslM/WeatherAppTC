@@ -23,6 +23,7 @@ struct WeatherPageView: View {
                         topTrailing: 0.0
                     )
                 )
+                .opacity(isSearchBtnClicked ? 0.3 : 1)
                 
                 WeatherDateView()
                 
@@ -36,7 +37,9 @@ struct WeatherPageView: View {
     }
     
     private func searchButtonTapped() {
-        self.isSearchBtnClicked.toggle()
+        withAnimation {
+            self.isSearchBtnClicked.toggle()
+        }
     }
 }
 
