@@ -8,36 +8,10 @@
 import Combine
 import Foundation
 
-class WeatherDataSource {
-    /*let networkService = NetworkService(
-        baseURL: Constants.API.Endpoints.location.rawValue,
-        apiKey: "VZQsYeGkGEU9FTGPUTCQ39pbVxTO3fiQ"
-    )
-    var cancellables: Set<AnyCancellable> = []
-
-    func fetchData() {
-        
-        let cancellable = networkService.fetchData(path: "/locations/v1/cities/autocomplete")
-            .sink(receiveCompletion: { completion in
-                switch completion {
-                case .finished:                    
-                    break
-                case .failure(let error):
-                    print("---- HERE 💀")
-                    print("Error: \(error)")
-                }
-            }, receiveValue: { (data: Location) in
-                // Assuming YourModel is the expected model from the API
-                // Handle received data
-                print("Received data: \(data)")
-            })
-
-        // Store the cancellable to keep it alive until completion
-        cancellables.insert(cancellable)
-    }
-    */
+class WeatherDataSource: ObservableObject {
+    @Published var locations: [Location] = []
     
-    func fetchData<T: Codable>(from endpoint: String, parameters: [String: String], responseType: T.Type, completion: @escaping (Result<T, NetworkError>) -> Void) {
+    private func fetchData<T: Codable>(from endpoint: String, parameters: [String: String], responseType: T.Type, completion: @escaping (Result<T, NetworkError>) -> Void) {
         var components = URLComponents(string: endpoint)
         components?.queryItems = parameters.map { URLQueryItem(name: $0.key, value: $0.value) }
         
@@ -69,16 +43,16 @@ class WeatherDataSource {
         task.resume()
     }
 
-    func getData() {
-        let query = "New York"
+    func getLocation(cityName: String) {
+        let query = cityName
         let accuweatherEndpoint = "https://dataservice.accuweather.com/locations/v1/cities/autocomplete"
         let parameters = ["apikey": Constants.API.API_KEY, "q": query]
 
         fetchData(from: accuweatherEndpoint, parameters: parameters, responseType: [Location].self) { result in
             switch result {
             case .success(let cities):
-                print("Cities: \(cities)")
-                // Handle the received data accordingly
+                self.locations = cities
+                print("Success ✅: \(self.locations.count)")
             case .failure(let error):
                 print("Error: \(error)")
                 // Handle errors appropriately

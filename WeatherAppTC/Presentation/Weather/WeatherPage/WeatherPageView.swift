@@ -18,7 +18,7 @@ struct WeatherPageView: View {
             Text("Hello, world!")
         }
         .onAppear {
-            mng.getData()
+            mng.getLocation(cityName: "Czech")
         }
         .padding()
     }
