@@ -8,16 +8,25 @@
 import Foundation
 import Combine
 
-
 class NetworkService {
     private let baseURL: String
+    private let apiKey: String // Your API key
     
-    init(baseURL: String) {
+    init(baseURL: String, apiKey: String) {
         self.baseURL = baseURL
+        self.apiKey = apiKey
     }
     
     func fetchData<T: Decodable>(path: String) -> AnyPublisher<T, Error> {
-        guard let url = URL(string: baseURL + path) else {
+        guard var urlComponents = URLComponents(string: baseURL + path) else {
+            return Fail(error: NetworkError.invalidURL).eraseToAnyPublisher()
+        }
+        
+        // Append API key as a query parameter
+        let apiKeyQueryItem = URLQueryItem(name: "apikey", value: apiKey)
+        urlComponents.queryItems = [apiKeyQueryItem]
+        
+        guard let url = urlComponents.url else {
             return Fail(error: NetworkError.invalidURL).eraseToAnyPublisher()
         }
         
@@ -28,6 +37,7 @@ class NetworkService {
             }
             .flatMap { (data, response) -> AnyPublisher<T, Error> in
                 guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
+                    //print(response.url)
                     return Fail(error: NetworkError.invalidResponse).eraseToAnyPublisher()
                 }
                 
@@ -37,9 +47,18 @@ class NetworkService {
                         // Handle decoding errors
                         return error as Error
                     }
+                    .map { decodedData -> T in
+                        // Handle nil values or provide default values here
+                        if let optionalData = decodedData as? String {
+                            // Check for nil and provide default value
+                            return optionalData as! T
+                        }
+                        return decodedData
+                    }
                     .eraseToAnyPublisher()
             }
             .receive(on: DispatchQueue.main) // Switch to the main thread for UI updates
             .eraseToAnyPublisher()
     }
 }
+
