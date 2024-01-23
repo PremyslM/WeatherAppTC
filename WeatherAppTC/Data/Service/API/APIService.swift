@@ -8,7 +8,8 @@
 import Foundation
 import Combine
 
-class NetworkService {
+class APIService {
+    /*
     private let baseURL: String
     private let apiKey: String // Your API key
     
@@ -37,7 +38,6 @@ class NetworkService {
             }
             .flatMap { (data, response) -> AnyPublisher<T, Error> in
                 guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
-                    //print(response.url)
                     return Fail(error: NetworkError.invalidResponse).eraseToAnyPublisher()
                 }
                 
@@ -59,6 +59,38 @@ class NetworkService {
             }
             .receive(on: DispatchQueue.main) // Switch to the main thread for UI updates
             .eraseToAnyPublisher()
+    }
+    */
+    func fetchData<T: Codable>(from endpoint: String, parameters: [String: String], responseType: T.Type, completion: @escaping (Result<T, NetworkError>) -> Void) {
+        var components = URLComponents(string: endpoint)
+        components?.queryItems = parameters.map { URLQueryItem(name: $0.key, value: $0.value) }
+        
+        guard let url = components?.url else {
+            completion(.failure(.invalidURL))
+            return
+        }
+        
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            if let error = error {
+                completion(.failure(.networkError(error)))
+                return
+            }
+            
+            guard let data = data else {
+                completion(.failure(.noData))
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                let decodedData = try decoder.decode(T.self, from: data)
+                completion(.success(decodedData))
+            } catch {
+                completion(.failure(.decodingError(error)))
+            }
+        }
+        
+        task.resume()
     }
 }
 
