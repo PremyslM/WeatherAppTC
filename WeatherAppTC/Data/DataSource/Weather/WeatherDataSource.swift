@@ -9,13 +9,21 @@ import Combine
 import Foundation
 
 class WeatherDataSource: ObservableObject {
-    @Published var weather: Temperature? // TODO: set temperature after cicking in location        
+    @Published var weather: [Temperature]? {
+        didSet {
+            print("DEBUG: Weather setted ✅")
+        }
+    }// TODO: set temperature after cicking in location
     
-    func getTemperature(locationKey: String) {
+    func setWeather(_ location: Location) {
+        self.getTemperature(locationKey: location.key)
+    }
+    
+    private func getTemperature(locationKey: String) {
         let accuweatherEndpoint = "https://dataservice.accuweather.com/currentconditions/v1/\(locationKey)"
         let parameters = ["apikey": Constants.API.API_KEY]
         
-        APIService().fetchData(from: accuweatherEndpoint, parameters: parameters, responseType: Temperature.self) { result in
+        APIService().fetchData(from: accuweatherEndpoint, parameters: parameters, responseType: [Temperature].self) { result in
             switch result {
             case .success(let temperature):
                 DispatchQueue.main.async {

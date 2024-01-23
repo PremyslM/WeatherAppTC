@@ -10,12 +10,16 @@ import SwiftUI
 struct WeatherPreviewPageView: View {
     @State private var isSearchBtnClicked: Bool = false
     
+    @StateObject var weatherDataSource: WeatherDataSource = WeatherDataSource()
+    
     var body: some View {
         ZStack {
             Color.darkBg
             VStack {
                 DynamicGradientWeatherContainer(
-                    content: WeatherDataView(onSearchBtnClick: searchButtonTapped),
+                    content: WeatherDataView(
+                        onSearchBtnClick: searchButtonTapped,
+                        temperature: weatherDataSource.weather ),
                     cornerRadius: .init(
                         topLeading: 0.0,
                         bottomLeading: 75.0,
@@ -32,7 +36,7 @@ struct WeatherPreviewPageView: View {
         }
         .ignoresSafeArea()
         .sheet(isPresented: $isSearchBtnClicked, content: {
-            SearchPageView()
+            SearchPageView(weatherDataSource: weatherDataSource)
         })
     }
     

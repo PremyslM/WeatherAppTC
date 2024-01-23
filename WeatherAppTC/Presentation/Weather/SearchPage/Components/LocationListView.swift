@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LocationListView: View {
     let locationList: [Location]
+    let onItemTapped: (Location) -> Void
     
     var body: some View {
         List {
@@ -23,6 +24,9 @@ struct LocationListView: View {
                         .font(.footnote)
                 }
                 .foregroundStyle(.white)
+                .onTapGesture {
+                    self.onItemTapped(location)
+                }
             }
             .listRowBackground(Color.clear)
         }

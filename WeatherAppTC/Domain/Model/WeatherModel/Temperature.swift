@@ -8,6 +8,10 @@
 import Foundation
 
 struct Temperature: Codable {
-    let value: Double
-    let unit: String
+    let weatherText: String
+    
+    enum CodingKeys: String, CodingKey {
+        case weatherText = "WeatherText"
+    }
+        
 }
