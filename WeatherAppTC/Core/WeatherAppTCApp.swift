@@ -13,7 +13,7 @@ struct WeatherAppTCApp: App {
         WindowGroup {
             ZStack {
                 Color.darkBg                
-                WeatherPageView()
+                WeatherPreviewPageView()
             }
         }
     }
