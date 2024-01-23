@@ -137,8 +137,7 @@
 				781591532B58795100F0ECC8 /* Presentation */,
 				781591522B58794C00F0ECC8 /* Domain */,
 				781591512B58794A00F0ECC8 /* Data */,
-				781591502B58794700F0ECC8 /* Core */,
-				7815912C2B5878B700F0ECC8 /* Preview Content */,
+				781591502B58794700F0ECC8 /* Other */,
 			);
 			path = WeatherAppTC;
 			sourceTree = "<group>";
@@ -168,14 +167,15 @@
 			path = WeatherAppTCUITests;
 			sourceTree = "<group>";
 		};
-		781591502B58794700F0ECC8 /* Core */ = {
+		781591502B58794700F0ECC8 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				7815912C2B5878B700F0ECC8 /* Preview Content */,
 				78766FA72B595DF300BD6A8E /* Helpers */,
 				781591572B587A0B00F0ECC8 /* Resources */,
 				781591262B5878B600F0ECC8 /* WeatherAppTCApp.swift */,
 			);
-			path = Core;
+			path = Other;
 			sourceTree = "<group>";
 		};
 		781591512B58794A00F0ECC8 /* Data */ = {
