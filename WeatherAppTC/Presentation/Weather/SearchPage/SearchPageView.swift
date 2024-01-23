@@ -9,7 +9,7 @@ import SwiftUI
 
 
 struct SearchPageView: View {
-    @StateObject var locationDataSource: WeatherDataSource = WeatherDataSource()
+    @StateObject var locationDataSource: LocationDataSource = LocationDataSource()
     
     var body: some View {
         ZStack {
