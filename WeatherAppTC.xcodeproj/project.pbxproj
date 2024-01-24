@@ -23,8 +23,10 @@
 		7815916D2B590E4A00F0ECC8 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7815916C2B590E4A00F0ECC8 /* APIService.swift */; };
 		7841C97F2B5D97D5000C9D69 /* SearchPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7841C97E2B5D97D5000C9D69 /* SearchPageView.swift */; };
 		7841C9812B5D97E0000C9D69 /* SearchPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7841C9802B5D97E0000C9D69 /* SearchPageViewModel.swift */; };
+		786EE8212B619D7C008AD7ED /* Temperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786EE8202B619D7C008AD7ED /* Temperature.swift */; };
+		786EE8232B61A0B4008AD7ED /* Double+RoundToPlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786EE8222B61A0B4008AD7ED /* Double+RoundToPlaces.swift */; };
 		78766F9C2B595C2700BD6A8E /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78766F9B2B595C2700BD6A8E /* NetworkError.swift */; };
-		78766FA02B595D2700BD6A8E /* Temperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78766F9F2B595D2700BD6A8E /* Temperature.swift */; };
+		78766FA02B595D2700BD6A8E /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78766F9F2B595D2700BD6A8E /* Weather.swift */; };
 		78766FA22B595D3000BD6A8E /* Metric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78766FA12B595D3000BD6A8E /* Metric.swift */; };
 		78766FA42B595D8A00BD6A8E /* LocationDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78766FA32B595D8A00BD6A8E /* LocationDataSource.swift */; };
 		78766FA62B595D9B00BD6A8E /* LocationAPIEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78766FA52B595D9B00BD6A8E /* LocationAPIEntity.swift */; };
@@ -73,8 +75,10 @@
 		7815916C2B590E4A00F0ECC8 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		7841C97E2B5D97D5000C9D69 /* SearchPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPageView.swift; sourceTree = "<group>"; };
 		7841C9802B5D97E0000C9D69 /* SearchPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPageViewModel.swift; sourceTree = "<group>"; };
+		786EE8202B619D7C008AD7ED /* Temperature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Temperature.swift; sourceTree = "<group>"; };
+		786EE8222B61A0B4008AD7ED /* Double+RoundToPlaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+RoundToPlaces.swift"; sourceTree = "<group>"; };
 		78766F9B2B595C2700BD6A8E /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
-		78766F9F2B595D2700BD6A8E /* Temperature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Temperature.swift; sourceTree = "<group>"; };
+		78766F9F2B595D2700BD6A8E /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		78766FA12B595D3000BD6A8E /* Metric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metric.swift; sourceTree = "<group>"; };
 		78766FA32B595D8A00BD6A8E /* LocationDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDataSource.swift; sourceTree = "<group>"; };
 		78766FA52B595D9B00BD6A8E /* LocationAPIEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAPIEntity.swift; sourceTree = "<group>"; };
@@ -321,7 +325,8 @@
 		78766F9E2B595CD000BD6A8E /* WeatherModel */ = {
 			isa = PBXGroup;
 			children = (
-				78766F9F2B595D2700BD6A8E /* Temperature.swift */,
+				78766F9F2B595D2700BD6A8E /* Weather.swift */,
+				786EE8202B619D7C008AD7ED /* Temperature.swift */,
 				78766FA12B595D3000BD6A8E /* Metric.swift */,
 			);
 			path = WeatherModel;
@@ -331,6 +336,7 @@
 			isa = PBXGroup;
 			children = (
 				78766FA82B595DF900BD6A8E /* Constants.swift */,
+				786EE8222B61A0B4008AD7ED /* Double+RoundToPlaces.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -523,7 +529,9 @@
 				781591622B590C4600F0ECC8 /* AdministrativeArea.swift in Sources */,
 				7815916D2B590E4A00F0ECC8 /* APIService.swift in Sources */,
 				781591662B590DFB00F0ECC8 /* WeatherDataSource.swift in Sources */,
-				78766FA02B595D2700BD6A8E /* Temperature.swift in Sources */,
+				786EE8232B61A0B4008AD7ED /* Double+RoundToPlaces.swift in Sources */,
+				78766FA02B595D2700BD6A8E /* Weather.swift in Sources */,
+				786EE8212B619D7C008AD7ED /* Temperature.swift in Sources */,
 				7815915E2B590C2000F0ECC8 /* Location.swift in Sources */,
 				781591602B590C3200F0ECC8 /* Country.swift in Sources */,
 				78766FA42B595D8A00BD6A8E /* LocationDataSource.swift in Sources */,

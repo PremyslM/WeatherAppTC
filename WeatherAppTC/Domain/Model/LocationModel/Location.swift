@@ -26,22 +26,3 @@ struct Location: Codable {
         case administrativeArea = "AdministrativeArea"
     }
 }
-
-
-extension Location {
-    static let MOCK_LOCATION = Location(
-        version: 1,
-        key: "SampleKey",
-        type: "City",
-        rank: 10,
-        localizedName: "Sample City",
-        country: Country(
-            id: "US",
-            localizedName: "United States"
-        ),
-        administrativeArea: AdministrativeArea(
-            id: "001",
-            localizedName: "Sample Administrative Area"
-        )
-    )
-}

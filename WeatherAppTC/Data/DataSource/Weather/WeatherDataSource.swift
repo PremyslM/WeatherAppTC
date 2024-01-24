@@ -9,7 +9,7 @@ import Combine
 import Foundation
 
 class WeatherDataSource: ObservableObject {
-    @Published var weather: [Temperature]? {
+    @Published var weather: [Weather]? {
         didSet {
             print("DEBUG: Weather setted ✅")
         }
@@ -23,7 +23,7 @@ class WeatherDataSource: ObservableObject {
         let accuweatherEndpoint = "https://dataservice.accuweather.com/currentconditions/v1/\(locationKey)"
         let parameters = ["apikey": Constants.API.API_KEY]
         
-        APIService().fetchData(from: accuweatherEndpoint, parameters: parameters, responseType: [Temperature].self) { result in
+        APIService().fetchData(from: accuweatherEndpoint, parameters: parameters, responseType: [Weather].self) { result in
             switch result {
             case .success(let temperature):
                 DispatchQueue.main.async {
