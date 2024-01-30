@@ -8,10 +8,14 @@
 import Foundation
 
 
-class LocationDataSource: ObservableObject {
-    @Published var locationList: [Location] = []
-
-    func getLocation(cityName: String) {
+class LocationDataModel {
+    var locations: [Location] = [] {
+        didSet {
+            print("DEBUG: Data model locationList has been setted.\n|COUNT:\(locations.count)|")
+        }
+    }        
+    
+    func getLocation(cityName: String, completion: @escaping ([Location]) -> Void) {
         let query = cityName
         let accuweatherEndpoint = "https://dataservice.accuweather.com/locations/v1/cities/autocomplete"
         let parameters = ["apikey": Constants.API.API_KEY, "q": query]
@@ -20,12 +24,11 @@ class LocationDataSource: ObservableObject {
             switch result {
             case .success(let cities):
                 DispatchQueue.main.async {
-                    self.locationList = cities
+                    completion(cities)
                 }
-                print("Success ✅: \(self.locationList.count)")
+                print("Success ✅, `Locations` fetched in data model Entity.")
             case .failure(let error):
                 print("Error: \(error)")
-                // Handle errors appropriately
             }
         }
     }

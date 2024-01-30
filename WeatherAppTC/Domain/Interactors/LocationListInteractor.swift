@@ -6,3 +6,19 @@
 //
 
 import Foundation
+
+
+class LocationListInteractor {
+    
+    let model: LocationDataModel
+    
+    init(model: LocationDataModel) {
+        self.model = model
+    }        
+    
+    func searchLocations(locationKey key: String, completion: @escaping ([Location]) -> Void) {
+        model.getLocation(cityName: key) { locations in
+            completion(locations)
+        }
+    }
+}

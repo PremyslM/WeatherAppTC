@@ -36,7 +36,7 @@ struct WeatherPreviewPageView: View {
         }
         .ignoresSafeArea()
         .sheet(isPresented: $isSearchBtnClicked, content: {
-            SearchPageView(weatherDataSource: weatherDataSource)
+            SearchPageView(weatherDataSource: weatherDataSource, locationPresenter: getLocationPresenter())
         })
     }
     
@@ -44,6 +44,13 @@ struct WeatherPreviewPageView: View {
         withAnimation {
             self.isSearchBtnClicked.toggle()
         }
+    }
+    
+    func getLocationPresenter() -> LocationListPresenter { // TODO: Make as a protocol "Presenter"
+        let model = LocationDataModel()
+        let interactor = LocationListInteractor(model: model)
+        let presenter = LocationListPresenter(interactor: interactor)
+        return presenter
     }
 }
 
