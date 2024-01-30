@@ -10,6 +10,7 @@ import SwiftUI
 struct WeatherDataView: View {
     let onSearchBtnClick: () -> Void
     let temperature: [Temperature]?
+    let locationPresenter: LocationListPresenter
     
     var body: some View {
         VStack {
@@ -20,7 +21,7 @@ struct WeatherDataView: View {
             } label: {
                 HStack {
                     Image(systemName: "magnifyingglass")
-                    Text("Prague")
+                    Text(locationPresenter.selectedLocation?.localizedName ?? "Unknown")
                         .fontWeight(.semibold)
                 }
                 .padding()

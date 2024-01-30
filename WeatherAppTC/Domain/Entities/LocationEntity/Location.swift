@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct Location: Codable {
+struct Location: Codable, Identifiable {
+    var id: UUID = UUID()
     var version: Int
     var key: String
     var type: String

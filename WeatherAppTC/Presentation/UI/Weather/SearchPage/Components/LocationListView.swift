@@ -8,12 +8,20 @@
 import SwiftUI
 
 struct LocationListView: View {
+    @ObservedObject private var locationListPresenter: LocationListPresenter
+    
     let locationList: [Location]
     let onItemTapped: (Location) -> Void
     
+    init(locationListPresenter: LocationListPresenter, locationList: [Location], onItemTapped: @escaping (Location) -> Void) {
+        self.locationListPresenter = locationListPresenter
+        self.locationList = locationList
+        self.onItemTapped = onItemTapped
+    }
+    
     var body: some View {
         List {
-            ForEach(locationList, id: \.localizedName) { location in
+            ForEach(locationList) { location in
                 HStack {
                     Text(location.localizedName)
                         .font(.system(size: 22, weight: .semibold))
@@ -26,6 +34,7 @@ struct LocationListView: View {
                 .foregroundStyle(.white)
                 .onTapGesture {
                     self.onItemTapped(location)
+                    locationListPresenter.setCurrentLocation(location: location)
                 }
             }
             .listRowBackground(Color.clear)
