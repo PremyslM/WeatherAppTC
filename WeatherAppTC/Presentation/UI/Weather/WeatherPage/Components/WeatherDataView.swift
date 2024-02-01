@@ -9,8 +9,7 @@ import SwiftUI
 
 struct WeatherDataView: View {
     let onSearchBtnClick: () -> Void
-    let temperature: [Temperature]?
-    let locationPresenter: LocationListPresenter
+    let locationPresenter: WeatherLocationListPresenter
     
     var body: some View {
         VStack {
@@ -43,7 +42,7 @@ struct WeatherDataView: View {
                         .foregroundStyle(Color.white)
                 }
                 
-                Text(temperature?.first?.weatherText ?? "Unknown") // for example: cloudy
+                Text(locationPresenter.weatherList.first?.weatherText ?? "unknown weather text") // for example: cloudy
                     .font(.system(size: 18, weight: .medium))
                     .foregroundStyle(.white)
                 

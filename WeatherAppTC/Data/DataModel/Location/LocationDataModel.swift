@@ -7,13 +7,8 @@
 
 import Foundation
 
-
 class LocationDataModel {
-    var locations: [Location] = [] {
-        didSet {
-            print("DEBUG: Data model locationList has been setted.\n|COUNT:\(locations.count)|")
-        }
-    }        
+    var locations: [Location]?
     
     func getLocation(cityName: String, completion: @escaping ([Location]) -> Void) {
         let query = cityName

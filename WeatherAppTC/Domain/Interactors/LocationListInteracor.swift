@@ -8,7 +8,7 @@
 import Foundation
 
 
-class LocationListInteractor {
+class LocationListInteracor {
     let model: LocationDataModel
     
     init(model: LocationDataModel) {

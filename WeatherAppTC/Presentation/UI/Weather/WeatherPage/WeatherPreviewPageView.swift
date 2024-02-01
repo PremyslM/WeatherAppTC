@@ -9,13 +9,14 @@ import SwiftUI
 
 struct WeatherPreviewPageView: View {
     @State private var isSearchBtnClicked: Bool = false
-    @StateObject var weatherDataSource: WeatherDataSource = WeatherDataSource()
-    @ObservedObject private var locationPresenter: LocationListPresenter
+    @ObservedObject private var locationPresenter: WeatherLocationListPresenter
     
     init() {
-        let model = LocationDataModel()
-        let interactor = LocationListInteractor(model: model)
-        let presenter = LocationListPresenter(interactor: interactor)
+        let locationModel = LocationDataModel()
+        let weatherModel = WeatherDataModel()
+        let locationInteractor = LocationListInteracor(model: locationModel)
+        let weatherInteractor = WeatherListInteractor(model: weatherModel)
+        let presenter = WeatherLocationListPresenter(locationInteractor, weatherInteractor)
         
         self.locationPresenter = presenter
     }
@@ -27,7 +28,6 @@ struct WeatherPreviewPageView: View {
                 DynamicGradientWeatherContainer(
                     content: WeatherDataView(
                         onSearchBtnClick: searchButtonTapped,
-                        temperature: weatherDataSource.weather,
                         locationPresenter: locationPresenter
                     ),
                     cornerRadius: .init(
@@ -46,7 +46,7 @@ struct WeatherPreviewPageView: View {
         }
         .ignoresSafeArea()
         .sheet(isPresented: $isSearchBtnClicked, content: {
-            SearchPageView(weatherDataSource: weatherDataSource, locationPresenter: locationPresenter)
+            SearchPageView(wlPresenter: locationPresenter)
         })
     }
     

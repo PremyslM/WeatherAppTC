@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct LocationListView: View {
-    @ObservedObject private var locationListPresenter: LocationListPresenter
+    @ObservedObject private var locationListPresenter: WeatherLocationListPresenter
     
     let locationList: [Location]
     let onItemTapped: (Location) -> Void
     
-    init(locationListPresenter: LocationListPresenter, locationList: [Location], onItemTapped: @escaping (Location) -> Void) {
+    init(locationListPresenter: WeatherLocationListPresenter, locationList: [Location], onItemTapped: @escaping (Location) -> Void) {
         self.locationListPresenter = locationListPresenter
         self.locationList = locationList
         self.onItemTapped = onItemTapped
