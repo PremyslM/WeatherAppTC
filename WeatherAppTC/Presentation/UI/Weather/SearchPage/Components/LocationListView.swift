@@ -35,6 +35,7 @@ struct LocationListView: View {
                 .onTapGesture {
                     self.onItemTapped(location)
                     locationListPresenter.setCurrentLocation(location: location)
+                    print("DEBUG: \(locationListPresenter.weatherList)")
                 }
             }
             .listRowBackground(Color.clear)

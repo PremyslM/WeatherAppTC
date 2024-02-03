@@ -10,7 +10,11 @@ import Combine
 
 class WeatherLocationListPresenter: ObservableObject {
     @Published var locationList: [Location]
-    @Published var weatherList: [Weather]
+    @Published var weatherList: [Weather] {
+        didSet {
+            print("AAAA -----> \(weatherList)")
+        }
+    }
     
     @Published var selectedLocation: Location?
     
@@ -43,7 +47,11 @@ class WeatherLocationListPresenter: ObservableObject {
         self.selectedLocation = location
     }
     
-    func setWeather(_ location: Location) {
-        self.weatherInteractor.setWeather(location)
+    func setWeather(_ location: Location) { // TODO: Async func
+        DispatchQueue.main.async {
+            self.weatherInteractor.setWeather(location)
+            self.weatherList = self.weatherInteractor.weatherList
+            print("----- |||\n\(self.weatherList)\n------")
+        }
     }
 }

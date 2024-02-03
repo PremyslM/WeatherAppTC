@@ -8,21 +8,27 @@
 import Foundation
 
 class WeatherDataModel {
-    var weatherList: [Temperature]?
+    //var weatherList: [Weather]?
     
+    /*
     func setWeather(_ location: Location) {
         self.getTemperature(locationKey: location.key)
     }
+     */
     
-    func getTemperature(locationKey: String) {
+    func getTemperature(
+        locationKey: String,
+        completion: @escaping ([Weather]) -> Void
+    ) {
         let accuweatherEndpoint = "https://dataservice.accuweather.com/currentconditions/v1/\(locationKey)"
         let parameters = ["apikey": Constants.API.API_KEY]
         
-        APIService().fetchData(from: accuweatherEndpoint, parameters: parameters, responseType: [Temperature].self) { result in
+        APIService().fetchData(from: accuweatherEndpoint, parameters: parameters, responseType: [Weather].self) { result in
             switch result {
             case .success(let temperature):
                 DispatchQueue.main.async {
-                    self.weatherList = temperature
+                    //self.weatherList = temperature
+                    completion(temperature)
                 }
             case .failure(let error):
                 print("Error: \(error)")
