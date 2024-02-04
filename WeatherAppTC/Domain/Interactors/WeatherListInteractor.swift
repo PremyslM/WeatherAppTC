@@ -23,7 +23,6 @@ class WeatherListInteractor {
     ) { // TODO: Async func
         model.getTemperature(locationKey: location.key) { weatherList in
             self.weatherList = weatherList
-            print("-- -- -- weatherList: \(self.weatherList)")
             completion()
         }
     }

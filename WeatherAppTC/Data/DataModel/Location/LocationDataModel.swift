@@ -21,9 +21,8 @@ class LocationDataModel {
                 DispatchQueue.main.async {
                     completion(cities)
                 }
-                print("Success ✅, `Locations` fetched in data model Entity.")
             case .failure(let error):
-                print("Error: \(error)")
+                fatalError(error.localizedDescription)
             }
         }
     }

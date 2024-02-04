@@ -7,15 +7,7 @@
 
 import Foundation
 
-class WeatherDataModel {
-    //var weatherList: [Weather]?
-    
-    /*
-    func setWeather(_ location: Location) {
-        self.getTemperature(locationKey: location.key)
-    }
-     */
-    
+class WeatherDataModel {    
     func getTemperature(
         locationKey: String,
         completion: @escaping ([Weather]) -> Void
@@ -27,12 +19,10 @@ class WeatherDataModel {
             switch result {
             case .success(let temperature):
                 DispatchQueue.main.async {
-                    //self.weatherList = temperature
                     completion(temperature)
                 }
             case .failure(let error):
-                print("Error: \(error)")
-                // Handle errors appropriately
+                fatalError(error.localizedDescription)
             }
         }
     }
