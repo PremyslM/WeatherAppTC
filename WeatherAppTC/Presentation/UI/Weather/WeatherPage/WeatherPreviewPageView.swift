@@ -28,7 +28,7 @@ struct WeatherPreviewPageView: View {
                 DynamicGradientWeatherContainer(
                     content: WeatherDataView(
                         onSearchBtnClick: searchButtonTapped,
-                        locationPresenter: locationPresenter
+                        presenter: locationPresenter
                     ),
                     cornerRadius: .init(
                         topLeading: 0.0,
