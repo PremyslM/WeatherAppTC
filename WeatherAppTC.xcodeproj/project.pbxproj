@@ -207,7 +207,6 @@
 		781591532B58795100F0ECC8 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				7884A76E2B66F5CF0055C1A4 /* ViewModel */,
 				7884A76D2B66F5BC0055C1A4 /* UI */,
 			);
 			path = Presentation;
@@ -409,13 +408,6 @@
 				781591582B587A6900F0ECC8 /* Weather */,
 			);
 			path = UI;
-			sourceTree = "<group>";
-		};
-		7884A76E2B66F5CF0055C1A4 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		78F8FEDC2B5FA956007819B3 /* Common */ = {

@@ -20,7 +20,7 @@ struct WeatherDataView: View {
             } label: {
                 HStack {
                     Image(systemName: "magnifyingglass")
-                    Text(locationPresenter.selectedLocation?.localizedName ?? "Unknown")
+                    Text(locationPresenter.selectedLocName)
                         .fontWeight(.semibold)
                 }
                 .padding()
@@ -37,12 +37,12 @@ struct WeatherDataView: View {
             
             VStack {
                 HStack(alignment: .top) {
-                    Text("\(String(format: "%.1f", locationPresenter.weatherList.first?.temperature.metric.value ?? 0))°") // in X°C
+                    Text(locationPresenter.metricTemperatureString) // in X°C
                         .font(.system(size: 64, weight: .bold))
                         .foregroundStyle(Color.white)
                 }
                 
-                Text(locationPresenter.weatherList.first?.weatherText ?? "unknown weather text") // for example: cloudy
+                Text(locationPresenter.weatherTextString) // for example: cloudy
                     .font(.system(size: 18, weight: .medium))
                     .foregroundStyle(.white)
                 
@@ -57,7 +57,7 @@ struct WeatherDataView: View {
                             Image(systemName: "wind")
                                 .font(.system(size: 24))
                                 .padding(.bottom, 1)
-                            Text("\(String(format: "%.0f", locationPresenter.weatherList.first?.wind?.speed.metric.value ?? 0)) m/s")
+                            Text(locationPresenter.windSpeedString)
                                 .font(.system(size: 18, weight: .medium))
                             Text("Wind")
                                 .font(.system(size: 16, weight: .semibold))

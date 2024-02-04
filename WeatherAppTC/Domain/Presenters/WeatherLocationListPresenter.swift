@@ -11,14 +11,11 @@ import Combine
 class WeatherLocationListPresenter: ObservableObject {
     @Published var locationList: [Location]
     @Published var weatherList: [Weather]
-    
     @Published var selectedLocation: Location?
     
     private let locationInteracotr: LocationListInteracor
     private let weatherInteractor: WeatherListInteractor
-    
-    private var cancellables = Set<AnyCancellable>()
-    
+
     init(
         _ locationInteractor: LocationListInteracor,
         _ weatherInteractor: WeatherListInteractor
@@ -30,6 +27,38 @@ class WeatherLocationListPresenter: ObservableObject {
         self.weatherInteractor = weatherInteractor
     }
     
+    var metricTemperatureString: String {
+        if let temp = weatherList.first?.temperature.metric.value {
+            return "\(Int(temp.rounded()))°"
+        }
+        return "unknown"
+    }
+    
+    var weatherTextString: String {
+        if let weatherText = weatherList.first?.weatherText {
+            return weatherText
+        }
+        return "unknown"
+    }
+    
+    var windSpeedString: String {
+        if let windSpeed = weatherList.first?.wind?.speed.metric.value {
+            return "\(Int(windSpeed.rounded())) m/s"
+        }
+        return "unknown"
+    }
+    
+    var selectedLocName: String {
+        if let localizedName = selectedLocation?.localizedName {
+            return localizedName
+        }
+        return "unknown"
+    }
+        
+}
+
+
+extension WeatherLocationListPresenter {
     func searchLocations(locationName: String) {
         locationInteracotr.searchLocations(locationKey: locationName) { locations in
             self.locationList = locations
@@ -45,4 +74,5 @@ class WeatherLocationListPresenter: ObservableObject {
             self.weatherList = self.weatherInteractor.weatherList
         }
     }
+    
 }
