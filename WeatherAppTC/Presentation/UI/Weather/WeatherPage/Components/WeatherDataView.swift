@@ -57,7 +57,7 @@ struct WeatherDataView: View {
                             Image(systemName: "wind")
                                 .font(.system(size: 24))
                                 .padding(.bottom, 1)
-                            Text("13 km/s")
+                            Text("\(String(format: "%.0f", locationPresenter.weatherList.first?.wind?.speed.metric.value ?? 0)) m/s")
                                 .font(.system(size: 18, weight: .medium))
                             Text("Wind")
                                 .font(.system(size: 16, weight: .semibold))
