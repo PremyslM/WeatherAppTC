@@ -37,7 +37,7 @@ struct WeatherDataView: View {
             
             VStack {
                 HStack(alignment: .top) {
-                    Text("\(locationPresenter.weatherList.first?.temperature.metric.value ?? 0.0)°") // in X°C
+                    Text("\(String(format: "%.1f", locationPresenter.weatherList.first?.temperature.metric.value ?? 0))°") // in X°C
                         .font(.system(size: 64, weight: .bold))
                         .foregroundStyle(Color.white)
                 }
