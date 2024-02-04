@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CustomSearchBarView: View {
+struct CustomSearchBarView: View {    
     @State private var searchText: String = "Czech"
     @State private var isEditing: Bool = false
     
@@ -38,7 +38,6 @@ struct CustomSearchBarView: View {
                 }
                 .padding(.horizontal, 10)
                 .transition(.move(edge: .trailing))
-                .animation(.default)
             }
         }
     }

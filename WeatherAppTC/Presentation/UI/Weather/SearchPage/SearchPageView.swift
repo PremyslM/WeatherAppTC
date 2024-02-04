@@ -37,8 +37,8 @@ struct SearchPageView: View {
                 CustomSearchBarView(
                     onSearchSubmit: wlPresenter.searchLocations
                 )
-                    .padding(.top)
-                    .foregroundStyle(.white)
+                .padding(.top)
+                .foregroundStyle(.white)
             }
             .padding()
         }

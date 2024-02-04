@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LocationListView: View {
+    @Environment(\.dismiss) var dismiss
     @ObservedObject private var locationListPresenter: WeatherLocationListPresenter
     
     let locationList: [Location]
@@ -35,7 +36,7 @@ struct LocationListView: View {
                 .onTapGesture {
                     self.onItemTapped(location)
                     locationListPresenter.setCurrentLocation(location: location)
-                    print("DEBUG: \(locationListPresenter.weatherList)")
+                    dismiss()
                 }
             }
             .listRowBackground(Color.clear)
