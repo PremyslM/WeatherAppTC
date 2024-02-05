@@ -58,12 +58,19 @@ class WeatherLocationListPresenter: ObservableObject {
         return "unknown"
     }
     
+    var pressureString: String {
+        if let pressure = weatherList.first?.pressure.metric.value {
+            return "\(pressure)kPal"
+        }
+        return "unknwon"
+    }
+    
     var detailForecastDictString: [String: String] {
         let result = [
             "Wind": windSpeedString,
-            "Presseure": 0.0.formatted(), // TODO: data
+            "Pressure": pressureString, // TODO: data
             "UVi": 0.0.formatted() //to
-        ]        
+        ]
         return result
     }
 }
