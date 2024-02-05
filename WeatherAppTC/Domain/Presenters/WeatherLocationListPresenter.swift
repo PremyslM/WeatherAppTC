@@ -11,6 +11,9 @@ import Combine
 class WeatherLocationListPresenter: ObservableObject {
     @Published var locationList: [Location]
     @Published var weatherList: [Weather]
+    
+    @Published var isLoading: Bool = true
+    
     @Published var selectedLocation: Location?
     
     private let locationInteracotr: LocationListInteracor
@@ -71,7 +74,9 @@ extension WeatherLocationListPresenter {
     
     func setWeather(_ location: Location) { // TODO: Async func
         self.weatherInteractor.setWeather(location) {
-            self.weatherList = self.weatherInteractor.weatherList
+            guard let weatherList = self.weatherInteractor.weatherList else { return }
+            self.weatherList = weatherList
+            self.isLoading = self.weatherInteractor.isLoading
         }
     }
     
