@@ -136,7 +136,6 @@
 		781591252B5878B600F0ECC8 /* WeatherAppTC */ = {
 			isa = PBXGroup;
 			children = (
-				7884A7682B66F4F50055C1A4 /* Infra */,
 				781591522B58794C00F0ECC8 /* Domain */,
 				781591532B58795100F0ECC8 /* Presentation */,
 				781591512B58794A00F0ECC8 /* Data */,
@@ -354,45 +353,6 @@
 				78766F9D2B595CC100BD6A8E /* LocationEntity */,
 			);
 			path = Entities;
-			sourceTree = "<group>";
-		};
-		7884A7682B66F4F50055C1A4 /* Infra */ = {
-			isa = PBXGroup;
-			children = (
-				7884A76C2B66F53E0055C1A4 /* Mappers */,
-				7884A76B2B66F5370055C1A4 /* Repositories */,
-				7884A76A2B66F5230055C1A4 /* Models */,
-				7884A7692B66F51C0055C1A4 /* DataSources */,
-			);
-			path = Infra;
-			sourceTree = "<group>";
-		};
-		7884A7692B66F51C0055C1A4 /* DataSources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = DataSources;
-			sourceTree = "<group>";
-		};
-		7884A76A2B66F5230055C1A4 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		7884A76B2B66F5370055C1A4 /* Repositories */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Repositories;
-			sourceTree = "<group>";
-		};
-		7884A76C2B66F53E0055C1A4 /* Mappers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Mappers;
 			sourceTree = "<group>";
 		};
 		7884A76D2B66F5BC0055C1A4 /* UI */ = {
