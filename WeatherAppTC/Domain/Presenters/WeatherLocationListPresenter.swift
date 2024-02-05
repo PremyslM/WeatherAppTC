@@ -57,7 +57,15 @@ class WeatherLocationListPresenter: ObservableObject {
         }
         return "unknown"
     }
-        
+    
+    var detailForecastDictString: [String: String] {
+        let result = [
+            "Wind": windSpeedString,
+            "Presseure": 0.0.formatted(), // TODO: data
+            "UVi": 0.0.formatted() //to
+        ]        
+        return result
+    }
 }
 
 
