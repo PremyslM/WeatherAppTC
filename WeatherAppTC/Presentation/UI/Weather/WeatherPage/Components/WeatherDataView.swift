@@ -34,14 +34,18 @@ struct WeatherDataView: View {
                     .resizable()
                     .symbolEffect(.bounce, options: .repeating, value: false)
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 150)
+                    .frame(width: 100)
                 
                 VStack {
                     HStack(alignment: .top) {
-                        Text(presenter.metricTemperatureString) // in X°C
+                        Text(presenter.metricTemperatureString)
                             .font(.system(size: 64, weight: .bold))
                             .foregroundStyle(Color.white)
                     }
+                    
+                    Text(presenter.feelsLikeTempString)
+                        .font(.footnote)
+                        .foregroundStyle(.white.opacity(0.9))
                     
                     Text(presenter.weatherTextString) // for example: cloudy
                         .font(.system(size: 18, weight: .medium))

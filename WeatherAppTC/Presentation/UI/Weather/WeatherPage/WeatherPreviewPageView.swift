@@ -39,6 +39,8 @@ struct WeatherPreviewPageView: View {
                 )
                 .opacity(isSearchBtnClicked ? 0.3 : 1)
                 
+                Spacer()
+                
                 WeatherCalendarView()
                 
                 Spacer()
