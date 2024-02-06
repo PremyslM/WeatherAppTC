@@ -14,19 +14,23 @@ struct WeatherDataView: View {
     var body: some View {
         ZStack {
             VStack {
-                Spacer()
-                
-                Button {
-                    self.onSearchBtnClick()
-                } label: {
-                    HStack {
-                        Image(systemName: "magnifyingglass")
-                        Text(presenter.selectedLocName)
-                            .fontWeight(.semibold)
+                HStack {
+                    Spacer()
+                    Button {
+                        self.onSearchBtnClick()
+                    } label: {
+                        VStack {
+                            Text(presenter.selectedLocName)
+                                .fontWeight(.semibold)
+                            Text(presenter.selectedLocation?.country.localizedName ?? "Unknown")
+                                .font(.footnote)
+                        }
+                        .padding()
+                        .foregroundStyle(.white)
+                        .font(.system(size: 24))
                     }
-                    .padding()
-                    .foregroundStyle(.white)
-                    .font(.system(size: 24))
+                    Spacer()
+                    Image(systemName: "link")
                 }
                 
                 Image(systemName: "cloud.fill")
@@ -73,6 +77,8 @@ struct WeatherDataView: View {
                     }
                     .padding(.vertical, 30)
                 }
+                
+                Spacer()
             }
             .padding(.horizontal)
             
@@ -88,6 +94,6 @@ struct WeatherDataView: View {
                 .frame(width: 200, height: 100)
             }
         }
-        
+        .safeAreaPadding(.vertical, 40)
     }
 }
