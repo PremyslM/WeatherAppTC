@@ -68,7 +68,7 @@ class WeatherLocationListPresenter: ObservableObject {
     }
     var feelsLikeTempString: String {
         if let flTemp = weatherList.first?.apparentTemperature.metric.value {
-            return "\(Int(flTemp))°"
+            return "Feels like \(Int(flTemp))°C"
         }
         return "unknown"
     }
