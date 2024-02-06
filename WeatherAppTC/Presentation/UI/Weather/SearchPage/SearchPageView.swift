@@ -24,7 +24,8 @@ struct SearchPageView: View {
                         locationListPresenter: wlPresenter,
                         locationList: wlPresenter.locationList,
                         onItemTapped: wlPresenter.setWeather
-                    ),
+                    ), 
+                    maxHeight: 550,
                     cornerRadius: .init(
                         topLeading: 35.0,
                         bottomLeading: 35.0,

@@ -32,6 +32,8 @@
 		78766FA92B595DF900BD6A8E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78766FA82B595DF900BD6A8E /* Constants.swift */; };
 		78EE59D82B71557E000D6888 /* Pressure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EE59D72B71557E000D6888 /* Pressure.swift */; };
 		78EE59DE2B727263000D6888 /* WeatherDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EE59DD2B727263000D6888 /* WeatherDetailModel.swift */; };
+		78EE59E12B72774B000D6888 /* ApparentTemperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EE59E02B72774B000D6888 /* ApparentTemperature.swift */; };
+		78EE59E32B727A16000D6888 /* Metric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EE59E22B727A16000D6888 /* Metric.swift */; };
 		78F8FEE02B5FA989007819B3 /* CustomSearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F8FEDF2B5FA989007819B3 /* CustomSearchBarView.swift */; };
 		78F8FEE22B5FA9C5007819B3 /* LocationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F8FEE12B5FA9C5007819B3 /* LocationListView.swift */; };
 		78F8FEE52B5FAA1F007819B3 /* WeatherDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F8FEE42B5FAA1F007819B3 /* WeatherDataView.swift */; };
@@ -85,6 +87,8 @@
 		78766FA82B595DF900BD6A8E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		78EE59D72B71557E000D6888 /* Pressure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pressure.swift; sourceTree = "<group>"; };
 		78EE59DD2B727263000D6888 /* WeatherDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailModel.swift; sourceTree = "<group>"; };
+		78EE59E02B72774B000D6888 /* ApparentTemperature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApparentTemperature.swift; sourceTree = "<group>"; };
+		78EE59E22B727A16000D6888 /* Metric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metric.swift; sourceTree = "<group>"; };
 		78F8FEDF2B5FA989007819B3 /* CustomSearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchBarView.swift; sourceTree = "<group>"; };
 		78F8FEE12B5FA9C5007819B3 /* LocationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationListView.swift; sourceTree = "<group>"; };
 		78F8FEE42B5FAA1F007819B3 /* WeatherDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataView.swift; sourceTree = "<group>"; };
@@ -334,10 +338,12 @@
 		78766F9E2B595CD000BD6A8E /* WeatherEntity */ = {
 			isa = PBXGroup;
 			children = (
+				78EE59DF2B727739000D6888 /* Apparent Temperature */,
 				785BE7D22B6B86A500AF8858 /* Weather.swift */,
 				78EE59D62B71556B000D6888 /* Pressure */,
 				785BE7D92B6F9A6700AF8858 /* Wind */,
 				785BE7D82B6F9A5B00AF8858 /* Temperature */,
+				78EE59E22B727A16000D6888 /* Metric.swift */,
 			);
 			path = WeatherEntity;
 			sourceTree = "<group>";
@@ -384,6 +390,14 @@
 				78EE59DD2B727263000D6888 /* WeatherDetailModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		78EE59DF2B727739000D6888 /* Apparent Temperature */ = {
+			isa = PBXGroup;
+			children = (
+				78EE59E02B72774B000D6888 /* ApparentTemperature.swift */,
+			);
+			path = "Apparent Temperature";
 			sourceTree = "<group>";
 		};
 		78F8FEDC2B5FA956007819B3 /* Common */ = {
@@ -564,6 +578,7 @@
 				78F8FEE52B5FAA1F007819B3 /* WeatherDataView.swift in Sources */,
 				785BE7D72B6F980E00AF8858 /* Double+roundTo.swift in Sources */,
 				781591292B5878B600F0ECC8 /* WeatherPreviewPageView.swift in Sources */,
+				78EE59E32B727A16000D6888 /* Metric.swift in Sources */,
 				785BE7D52B6B878700AF8858 /* WeatherListInteractor.swift in Sources */,
 				781591272B5878B600F0ECC8 /* WeatherAppTCApp.swift in Sources */,
 				785BE7CF2B68FCFE00AF8858 /* WeatherLocationListPresenter.swift in Sources */,
@@ -577,6 +592,7 @@
 				78766FA02B595D2700BD6A8E /* Temperature.swift in Sources */,
 				7815915E2B590C2000F0ECC8 /* Location.swift in Sources */,
 				781591602B590C3200F0ECC8 /* Country.swift in Sources */,
+				78EE59E12B72774B000D6888 /* ApparentTemperature.swift in Sources */,
 				78766FA42B595D8A00BD6A8E /* LocationDataModel.swift in Sources */,
 				78F8FEE02B5FA989007819B3 /* CustomSearchBarView.swift in Sources */,
 				7841C97F2B5D97D5000C9D69 /* SearchPageView.swift in Sources */,

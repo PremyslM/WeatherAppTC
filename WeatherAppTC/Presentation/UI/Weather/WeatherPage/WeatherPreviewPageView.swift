@@ -23,13 +23,14 @@ struct WeatherPreviewPageView: View {
     
     var body: some View {
         ZStack {
-            Color.darkBg
+            Color.darkBg                
             VStack {
                 DynamicGradientWeatherContainer(
                     content: WeatherDataView(
                         onSearchBtnClick: searchButtonTapped,
                         presenter: locationPresenter
                     ),
+                    maxHeight: 700,
                     cornerRadius: .init(
                         topLeading: 0.0,
                         bottomLeading: 75.0,
@@ -39,15 +40,13 @@ struct WeatherPreviewPageView: View {
                 )
                 .opacity(isSearchBtnClicked ? 0.3 : 1)
                 
-                WeatherCalendarView()
-                
                 Spacer()
             }
         }
-        .ignoresSafeArea()
         .sheet(isPresented: $isSearchBtnClicked, content: {
             SearchPageView(wlPresenter: locationPresenter)
         })
+        .ignoresSafeArea()
     }
     
     private func searchButtonTapped() {

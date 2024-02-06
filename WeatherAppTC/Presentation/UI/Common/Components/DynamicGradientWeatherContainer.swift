@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DynamicGradientWeatherContainer<Content: View>: View {
     let content: Content
-    
+    let maxHeight: CGFloat
     let cornerRadius: RectangleCornerRadii
     
     var body: some View {
@@ -18,7 +18,7 @@ struct DynamicGradientWeatherContainer<Content: View>: View {
             
             content
         }
-        .frame(maxHeight: 550)
+        .frame(maxHeight: maxHeight)
         .clipShape(
             UnevenRoundedRectangle(cornerRadii: cornerRadius,
                                    style: .continuous)

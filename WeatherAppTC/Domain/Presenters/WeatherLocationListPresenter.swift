@@ -66,6 +66,12 @@ class WeatherLocationListPresenter: ObservableObject {
         }
         return "unknown"
     }
+    var feelsLikeTempString: String {
+        if let flTemp = weatherList.first?.apparentTemperature.metric.value {
+            return "Feels like \(Int(flTemp))°C"
+        }
+        return "unknown"
+    }
     var weatherDetailList: [WeatherDetailModel] {
         let result = [
             WeatherDetailModel(
@@ -79,7 +85,7 @@ class WeatherLocationListPresenter: ObservableObject {
             WeatherDetailModel(
                 label: "UV",
                 content: uvIndexString,
-                systemImage: "sun.max.fill"),
+                systemImage: "sun.max.fill"),            
         ]
         return result
     }
