@@ -21,13 +21,5 @@ struct Wind: Codable {
         enum CodingKeys: String, CodingKey {
             case metric = "Metric"
         }
-        
-        struct Metric: Codable {
-            let value: Double
-            
-            enum CodingKeys: String, CodingKey {
-                case value = "Value"
-            }
-        }
     }
 }

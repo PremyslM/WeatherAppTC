@@ -13,15 +13,4 @@ struct Temperature: Codable {
     enum CodingKeys: String, CodingKey {
         case metric = "Metric"
     }
-    
-    struct Metric: Codable {
-        let value: Double?
-        let unit: String?
-        
-        enum CodingKeys: String, CodingKey {
-            case value = "Value"
-            case unit = "Unit"
-        }
-    }
-
 }
