@@ -53,14 +53,14 @@ struct WeatherDataView: View {
                         .padding(.top, 50)
                     
                     HStack(spacing: 40) {
-                        ForEach(presenter.detailForecastDictString.sorted(by: { $0.0 < $1.0 }), id: \.key) { key, value in
+                        ForEach(presenter.weatherDetailList, id: \.label) { detailItem in
                             VStack {
-                                Image(systemName: "wind")
+                                Image(systemName: detailItem.systemImage)
                                     .font(.system(size: 24))
                                     .padding(.bottom, 1)
-                                Text(value)
+                                Text(detailItem.label)
                                     .font(.system(size: 18, weight: .medium))
-                                Text(key)
+                                Text(detailItem.content)
                                     .font(.system(size: 16, weight: .semibold))
                                     .foregroundStyle(.white.opacity(0.8))
                             }

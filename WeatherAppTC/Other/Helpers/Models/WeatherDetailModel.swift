@@ -9,10 +9,6 @@ import Foundation
 
 struct WeatherDetailModel {
     let label: String
-    let value: Double
+    let content: String
     let systemImage: String
-    
-    var valueInt: Int {
-        return Int(value)
-    }
 }

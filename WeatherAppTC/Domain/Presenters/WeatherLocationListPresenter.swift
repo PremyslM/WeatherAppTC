@@ -36,51 +36,54 @@ class WeatherLocationListPresenter: ObservableObject {
         }
         return "unknown"
     }
-    
     var weatherTextString: String {
         if let weatherText = weatherList.first?.weatherText {
             return weatherText
         }
         return "unknown"
     }
-    
     var windSpeedString: String {
         if let windSpeed = weatherList.first?.wind?.speed.metric.value {
             return "\(Int(windSpeed.rounded())) m/s"
         }
         return "unknown"
     }
-    
     var selectedLocName: String {
         if let localizedName = selectedLocation?.localizedName {
             return localizedName
         }
         return "unknown"
     }
-    
     var pressureString: String {
         if let pressure = weatherList.first?.pressure.metric.value {
-            return "\(pressure)kPal"
+            return "\(Int(pressure)) kPal"
         }
         return "unknwon"
     }
-    
     var uvIndexString: String {
         if let uvIndex = weatherList.first?.uvIndex {
             return "\(uvIndex)"
         }
-        
         return "unknown"
     }
-    
-    var detailForecastDictString: [String: String] {
+    var weatherDetailList: [WeatherDetailModel] {
         let result = [
-            "Wind": windSpeedString,
-            "Pressure": pressureString,
-            "UV": uvIndexString,
+            WeatherDetailModel(
+                label: "Wind",
+                content: windSpeedString,
+                systemImage: "wind"),
+            WeatherDetailModel(
+                label: "Pressure",
+                content: pressureString,
+                systemImage: "barometer"),
+            WeatherDetailModel(
+                label: "UV",
+                content: uvIndexString,
+                systemImage: "sun.max.fill"),
         ]
         return result
     }
+    
 }
 
 
