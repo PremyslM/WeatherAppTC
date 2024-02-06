@@ -65,11 +65,19 @@ class WeatherLocationListPresenter: ObservableObject {
         return "unknwon"
     }
     
+    var uvIndexString: String {
+        if let uvIndex = weatherList.first?.uvIndex {
+            return "\(uvIndex)"
+        }
+        
+        return "unknown"
+    }
+    
     var detailForecastDictString: [String: String] {
         let result = [
             "Wind": windSpeedString,
-            "Pressure": pressureString, // TODO: data
-            "UVi": 0.0.formatted() //to
+            "Pressure": pressureString,
+            "UV": uvIndexString,
         ]
         return result
     }
