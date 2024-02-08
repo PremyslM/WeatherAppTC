@@ -22,8 +22,7 @@ struct WeatherPreviewPageView: View {
     }
     
     var body: some View {
-        ZStack {
-            Color.darkBg
+        ZStack {            
             if locationPresenter.selectedLocation == nil {
                 NavSearchButtonView(onClickAction: searchButtonTapped)
             } else {

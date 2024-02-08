@@ -13,7 +13,7 @@ struct NavSearchButtonView: View {
     
     var body: some View {
         ZStack {
-            Color.white
+            Color.blue
             
             VStack(spacing: 10) {
                 Text("Search for location")
@@ -22,7 +22,7 @@ struct NavSearchButtonView: View {
                     .scaledToFit()
                     .frame(width: 30)
             }
-            .foregroundStyle(.blue)
+            .foregroundStyle(.white)
             .font(.system(size: 20, weight: .semibold))
         }
         .frame(width: 250, height: 150)
