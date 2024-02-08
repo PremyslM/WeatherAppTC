@@ -32,6 +32,7 @@ struct NavSearchButtonView: View {
         .shadow(color: .black, radius: 10)
         .onTapGesture {
             onClickAction()
+            print("Tapped")
         }
     }
 }
