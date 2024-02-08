@@ -15,23 +15,23 @@ struct WeatherDataView: View {
         ZStack {
             VStack {
                 HStack {
-                    Spacer()
+                    //Spacer()
                     Button {
                         self.onSearchBtnClick()
                     } label: {
-                        VStack {
+                        VStack(alignment: .leading) {
                             Text(presenter.selectedLocName)
                                 .fontWeight(.semibold)
                             Text(presenter.selectedLocation?.country.localizedName ?? "Unknown")
                                 .font(.footnote)
                         }
                         .padding()
-                        .foregroundStyle(.white)
-                        .font(.system(size: 24))
+                        .font(.system(size: 18))
                     }
                     Spacer()
                     Image(systemName: "link")
                 }
+                .foregroundStyle(.white)
                 
                 Image(systemName: "cloud.fill")
                     .renderingMode(.original)
