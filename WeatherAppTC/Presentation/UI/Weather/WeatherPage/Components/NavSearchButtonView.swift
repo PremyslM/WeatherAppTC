@@ -17,7 +17,7 @@ struct NavSearchButtonView: View {
             
             VStack(spacing: 10) {
                 Text("Search for location")
-                Image(systemName: "doc.text.magnifyingglass")
+                Image(systemName: "location.magnifyingglass")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 30)

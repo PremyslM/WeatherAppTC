@@ -23,7 +23,7 @@ struct WeatherDataView: View {
                             HStack {
                                 Text(presenter.selectedLocName)
                                     .fontWeight(.semibold)
-                                Image(systemName: "doc.text.magnifyingglass")
+                                Image(systemName: "location.magnifyingglass")
                             }
                             Text(presenter.selectedLocation?.country.localizedName ?? "Unknown") // TODO: Add into presenter "Country"
                                 .font(.footnote)
