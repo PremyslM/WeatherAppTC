@@ -20,9 +20,12 @@ struct WeatherDataView: View {
                         self.onSearchBtnClick()
                     } label: {
                         VStack(alignment: .leading) {
-                            Text(presenter.selectedLocName)
-                                .fontWeight(.semibold)
-                            Text(presenter.selectedLocation?.country.localizedName ?? "Unknown")
+                            HStack {
+                                Text(presenter.selectedLocName)
+                                    .fontWeight(.semibold)
+                                Image(systemName: "doc.text.magnifyingglass")
+                            }
+                            Text(presenter.selectedLocation?.country.localizedName ?? "Unknown") // TODO: Add into presenter "Country"
                                 .font(.footnote)
                         }
                         .padding()

@@ -422,9 +422,9 @@
 		78F8FEE32B5FA9EE007819B3 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				78B1C1E32B75115B00774FF9 /* NavSearchButtonView.swift */,
 				78F8FEE42B5FAA1F007819B3 /* WeatherDataView.swift */,
 				78F8FEE62B5FAA48007819B3 /* WeatherCalendarView.swift */,
-				78B1C1E32B75115B00774FF9 /* NavSearchButtonView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
