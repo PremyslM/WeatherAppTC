@@ -33,7 +33,7 @@ struct WeatherPreviewPageView: View {
                             onSearchBtnClick: searchButtonTapped,
                             presenter: locationPresenter
                         ),
-                        maxHeight: 700,
+                        maxHeight: 550,
                         cornerRadius: .init(
                             topLeading: 0.0,
                             bottomLeading: 75.0,

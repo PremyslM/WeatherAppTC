@@ -13,7 +13,7 @@ struct NavSearchButtonView: View {
     
     var body: some View {
         ZStack {
-            Color.darkBg
+            Color.white
             
             VStack(spacing: 10) {
                 Text("Search for location")
@@ -22,14 +22,14 @@ struct NavSearchButtonView: View {
                     .scaledToFit()
                     .frame(width: 30)
             }
-            .foregroundStyle(.white)
+            .foregroundStyle(.blue)
             .font(.system(size: 20, weight: .semibold))
         }
         .frame(width: 250, height: 150)
         .clipShape(
             RoundedRectangle(cornerRadius: 18)
         )
-        .shadow(color: .black, radius: 10)
+        .shadow(color: .blue, radius: 10)
         .onTapGesture {
             onClickAction()
             print("Tapped")
