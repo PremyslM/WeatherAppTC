@@ -11,11 +11,12 @@ struct WeatherDataView: View {
     let onSearchBtnClick: () -> Void
     let presenter: WeatherLocationListPresenter
     
+    @State private var linkButtonClicked: Bool = false
+    
     var body: some View {
         ZStack {
             VStack {
                 HStack {
-                    //Spacer()
                     Button {
                         self.onSearchBtnClick()
                     } label: {
@@ -33,15 +34,20 @@ struct WeatherDataView: View {
                     }
                     Spacer()
                     Image(systemName: "link")
+                        .onTapGesture {
+                            self.linkButtonClicked.toggle()
+                        }
+                        .sheet(isPresented: $linkButtonClicked, content: {
+                            WebView(url: presenter.weatherURLLinkString)
+                        })
                 }
                 .foregroundStyle(.white)
                 
-                Image(systemName: "cloud.fill")
-                    .renderingMode(.original)
+                Image(systemName: presenter.weatherSystemImage)
                     .resizable()
-                    .symbolEffect(.bounce, options: .repeating, value: false)
-                    .aspectRatio(contentMode: .fit)
+                    .scaledToFill()
                     .frame(width: 100)
+                    .foregroundStyle(.white)
                 
                 VStack {
                     HStack(alignment: .top) {
@@ -83,6 +89,7 @@ struct WeatherDataView: View {
                 
                 Spacer()
             }
+            .padding(.top, 50)
             .padding(.horizontal)
             
             if presenter.isLoading {
@@ -97,6 +104,6 @@ struct WeatherDataView: View {
                 .frame(width: 200, height: 100)
             }
         }
-        .safeAreaPadding(.vertical, 40)
+        .safeAreaPadding(.vertical, 80)
     }
 }

@@ -16,6 +16,7 @@ class WeatherLocationListPresenter: ObservableObject {
     
     @Published var selectedLocation: Location?
     
+    private let weatherIconProvider: WeatherIconProvider
     private let locationInteracotr: LocationListInteracor
     private let weatherInteractor: WeatherListInteractor
 
@@ -25,6 +26,8 @@ class WeatherLocationListPresenter: ObservableObject {
     ) {
         self.locationList = []
         self.weatherList = []
+        
+        self.weatherIconProvider = WeatherIconProvider()
         
         self.locationInteracotr = locationInteractor
         self.weatherInteractor = weatherInteractor
@@ -71,6 +74,16 @@ class WeatherLocationListPresenter: ObservableObject {
             return "Feels like \(Int(flTemp))°C"
         }
         return "unknown"
+    }
+    var weatherURLLinkString: String {
+        if let urlLink = weatherList.first?.urlLink {
+            return urlLink
+        }
+        return ""
+    }
+    var weatherSystemImage: String {
+        guard let weatherIcon = weatherList.first?.weatherIcon else { return "" }
+        return weatherIconProvider.getWeatherIcon(for: Int(weatherIcon))
     }
     var weatherDetailList: [WeatherDetailModel] {
         let result = [

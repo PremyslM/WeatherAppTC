@@ -16,7 +16,7 @@ class LocationListInteracor {
     }        
     
     func searchLocations(locationKey key: String, completion: @escaping ([Location]) -> Void) {
-        model.getLocation(cityName: key) { locations in
+        model.getLocation(cityName: key) { locations, success  in
             completion(locations)
         }
     }
