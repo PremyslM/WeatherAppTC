@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 class WeatherLocationListPresenter: ObservableObject {
-    @Published var locationList: [Location]
+    @Published var locationList: [Location]?
     @Published var weatherList: Weather?
     
     @Published var isLoading: Bool = true
@@ -18,15 +18,12 @@ class WeatherLocationListPresenter: ObservableObject {
     
     private let weatherIconProvider: WeatherIconProvider
     private let locationInteracotr: LocationListInteracor
-    private let weatherInteractor: WeatherListInteractor
+    private let weatherInteractor: WeatherInteractor
 
     init(
         _ locationInteractor: LocationListInteracor,
-        _ weatherInteractor: WeatherListInteractor
+        _ weatherInteractor: WeatherInteractor
     ) {
-        self.locationList = []
-        //self.weatherList = []
-        
         self.weatherIconProvider = WeatherIconProvider()
         
         self.locationInteracotr = locationInteractor
@@ -82,7 +79,8 @@ class WeatherLocationListPresenter: ObservableObject {
         return ""
     }
     var weatherSystemImage: String {
-        guard let weatherIcon = weatherList?.weatherIcon else { return "" }
+        guard let weatherIcon = weatherList?
+            .weatherIcon else { return "" }
         return weatherIconProvider.getWeatherIcon(for: Int(weatherIcon))
     }
     var weatherDetailList: [WeatherDetailModel] {
@@ -105,19 +103,26 @@ class WeatherLocationListPresenter: ObservableObject {
     
 }
 
+extension WeatherLocationListPresenter {
+    
+}
+
 
 extension WeatherLocationListPresenter {
-    func searchLocations(locationName: String) {
-        locationInteracotr.searchLocations(locationKey: locationName) { locations in
-            self.locationList = locations
+    //TODO: Create meothods like "onAddButtonTapped", .... ;) For deviding loogic part
+    
+    private func setLocationsList(for localizedName: String) {
+        locationInteracotr.searchLocations(locationKey: localizedName) {
+            guard let locationList = self.locationInteracotr.locationList else { return }
+            self.locationList = locationList
         }
     }
     
-    func setCurrentLocation(location: Location) {
+    private func setCurrentLocation(location: Location) {
         self.selectedLocation = location
     }
     
-    func setWeather(_ location: Location) { // TODO: Async func
+    private func setWeather(_ location: Location) { // TODO: Async func
         self.weatherInteractor.setWeather(location) {
             guard let weatherList = self.weatherInteractor.weatherList else { return }
             self.weatherList = weatherList

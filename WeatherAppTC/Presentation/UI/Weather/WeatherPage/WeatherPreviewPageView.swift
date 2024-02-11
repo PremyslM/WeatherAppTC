@@ -15,7 +15,7 @@ struct WeatherPreviewPageView: View {
         let locationModel = LocationDataModel()
         let weatherModel = WeatherDataModel()
         let locationInteractor = LocationListInteracor(model: locationModel)
-        let weatherInteractor = WeatherListInteractor(model: weatherModel)
+        let weatherInteractor = WeatherInteractor(model: weatherModel)
         let presenter = WeatherLocationListPresenter(locationInteractor, weatherInteractor)
         
         self.locationPresenter = presenter
