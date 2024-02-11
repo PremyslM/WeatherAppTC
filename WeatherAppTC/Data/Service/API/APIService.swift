@@ -10,7 +10,12 @@ import Combine
 
 class APIService {
     
-    func fetchData<T: Codable>(from endpoint: String, parameters: [String: String], responseType: T.Type, completion: @escaping (Result<T, NetworkError>) -> Void) {
+    func fetchData<T: Codable>(
+        from endpoint: String,
+        parameters: [String: String],
+        responseType: T.Type,
+        completion: @escaping (Result<T, NetworkError>) -> Void
+    ) {
         var components = URLComponents(string: endpoint)
         components?.queryItems = parameters.map { URLQueryItem(name: $0.key, value: $0.value) }
         

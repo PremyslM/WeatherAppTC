@@ -9,7 +9,7 @@ import Foundation
 
 
 class WeatherListInteractor {
-    var weatherList: [Weather]? = nil {
+    var weatherList: Weather? = nil {
         didSet {
             isLoading = false
         }
@@ -25,8 +25,8 @@ class WeatherListInteractor {
         _ location: Location,
         completion: @escaping () -> Void
     ) {
-        model.getTemperature(locationKey: location.key) { weatherList in
-            self.weatherList = weatherList
+        model.getTemperature(locationKey: location.key) { weatherList in                    
+            self.weatherList = weatherList.first
             completion()
         }
     }

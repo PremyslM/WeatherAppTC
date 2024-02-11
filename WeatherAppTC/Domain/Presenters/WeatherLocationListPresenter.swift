@@ -10,7 +10,7 @@ import Combine
 
 class WeatherLocationListPresenter: ObservableObject {
     @Published var locationList: [Location]
-    @Published var weatherList: [Weather]
+    @Published var weatherList: Weather?
     
     @Published var isLoading: Bool = true
     
@@ -25,7 +25,7 @@ class WeatherLocationListPresenter: ObservableObject {
         _ weatherInteractor: WeatherListInteractor
     ) {
         self.locationList = []
-        self.weatherList = []
+        //self.weatherList = []
         
         self.weatherIconProvider = WeatherIconProvider()
         
@@ -34,19 +34,19 @@ class WeatherLocationListPresenter: ObservableObject {
     }
     
     var metricTemperatureString: String {
-        if let temp = weatherList.first?.temperature.metric.value {
+        if let temp = weatherList?.temperature.metric.value {
             return "\(Int(temp.rounded()))°"
         }
         return "unknown"
     }
     var weatherTextString: String {
-        if let weatherText = weatherList.first?.weatherText {
+        if let weatherText = weatherList?.weatherText {
             return weatherText
         }
         return "unknown"
     }
     var windSpeedString: String {
-        if let windSpeed = weatherList.first?.wind?.speed.metric.value {
+        if let windSpeed = weatherList?.wind?.speed.metric.value {
             return "\(Int(windSpeed.rounded())) m/s"
         }
         return "unknown"
@@ -58,31 +58,31 @@ class WeatherLocationListPresenter: ObservableObject {
         return "unknown"
     }
     var pressureString: String {
-        if let pressure = weatherList.first?.pressure.metric.value {
+        if let pressure = weatherList?.pressure.metric.value {
             return "\(Int(pressure)) kPal"
         }
         return "unknwon"
     }
     var uvIndexString: String {
-        if let uvIndex = weatherList.first?.uvIndex {
+        if let uvIndex = weatherList?.uvIndex {
             return "\(uvIndex)"
         }
         return "unknown"
     }
     var feelsLikeTempString: String {
-        if let flTemp = weatherList.first?.apparentTemperature.metric.value {
+        if let flTemp = weatherList?.apparentTemperature.metric.value {
             return "Feels like \(Int(flTemp))°C"
         }
         return "unknown"
     }
     var weatherURLLinkString: String {
-        if let urlLink = weatherList.first?.urlLink {
+        if let urlLink = weatherList?.urlLink {
             return urlLink
         }
         return ""
     }
     var weatherSystemImage: String {
-        guard let weatherIcon = weatherList.first?.weatherIcon else { return "" }
+        guard let weatherIcon = weatherList?.weatherIcon else { return "" }
         return weatherIconProvider.getWeatherIcon(for: Int(weatherIcon))
     }
     var weatherDetailList: [WeatherDetailModel] {
