@@ -8,43 +8,46 @@
 import SwiftUI
 
 struct WeatherPreviewPageView: View {
+    @ObservedObject private var presenter: WeatherLocationListPresenter
     @State private var isSearchBtnClicked: Bool = false
-    @ObservedObject private var locationPresenter: WeatherLocationListPresenter
     
     init() {
         let locationModel = LocationDataModel()
         let weatherModel = WeatherDataModel()
         let locationInteractor = LocationListInteracor(model: locationModel)
-        let weatherInteractor = WeatherListInteractor(model: weatherModel)
+        let weatherInteractor = WeatherInteractor(model: weatherModel)
         let presenter = WeatherLocationListPresenter(locationInteractor, weatherInteractor)
         
-        self.locationPresenter = presenter
+        self.presenter = presenter
     }
     
     var body: some View {
-        ZStack {
-            Color.darkBg                
-            VStack {
-                DynamicGradientWeatherContainer(
-                    content: WeatherDataView(
-                        onSearchBtnClick: searchButtonTapped,
-                        presenter: locationPresenter
-                    ),
-                    maxHeight: 700,
-                    cornerRadius: .init(
-                        topLeading: 0.0,
-                        bottomLeading: 75.0,
-                        bottomTrailing: 75.0,
-                        topTrailing: 0.0
+        ZStack {            
+            if !presenter.isLocationSelected() {
+                NavSearchButtonView(onClickAction: searchButtonTapped)
+            } else {
+                VStack {
+                    DynamicGradientWeatherContainer(
+                        content: WeatherDataView(
+                            onSearchBtnClick: searchButtonTapped,
+                            presenter: presenter
+                        ),
+                        maxHeight: 550,
+                        cornerRadius: .init(
+                            topLeading: 0.0,
+                            bottomLeading: 75.0,
+                            bottomTrailing: 75.0,
+                            topTrailing: 0.0
+                        )
                     )
-                )
-                .opacity(isSearchBtnClicked ? 0.3 : 1)
-                
-                Spacer()
+                    .opacity(isSearchBtnClicked ? 0.3 : 1)
+                    
+                    Spacer()
+                }
             }
         }
         .sheet(isPresented: $isSearchBtnClicked, content: {
-            SearchPageView(wlPresenter: locationPresenter)
+            SearchPageView(wlPresenter: presenter)
         })
         .ignoresSafeArea()
     }

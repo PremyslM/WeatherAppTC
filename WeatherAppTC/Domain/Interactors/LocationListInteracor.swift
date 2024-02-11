@@ -9,15 +9,20 @@ import Foundation
 
 
 class LocationListInteracor {
-    let model: LocationDataModel
+    var locationList: [Location]? = nil
+    private let model: LocationDataModel
     
     init(model: LocationDataModel) {
         self.model = model
     }        
     
-    func searchLocations(locationKey key: String, completion: @escaping ([Location]) -> Void) {
-        model.getLocation(cityName: key) { locations in
-            completion(locations)
+    func searchLocations(
+        locationKey key: String,
+        completion: @escaping () -> Void
+    ) {
+        model.getLocation(cityName: key) { locations, success  in
+            self.locationList = locations
+            completion()
         }
     }
 }

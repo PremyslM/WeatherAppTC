@@ -12,7 +12,8 @@ struct WeatherAppTCApp: App {
     var body: some Scene {
         WindowGroup {
             ZStack {
-                Color.darkBg                
+                Color.blue.opacity(0.3)
+                    .ignoresSafeArea()
                 WeatherPreviewPageView()
             }
         }

@@ -23,8 +23,8 @@ struct SearchPageView: View {
                     content: LocationListView(
                         locationListPresenter: wlPresenter,
                         locationList: wlPresenter.locationList,
-                        onItemTapped: wlPresenter.setWeather
-                    ), 
+                        onItemTapped: wlPresenter.onLocationItemTapped
+                    ),
                     maxHeight: 550,
                     cornerRadius: .init(
                         topLeading: 35.0,
@@ -36,7 +36,7 @@ struct SearchPageView: View {
                 Spacer()
                 
                 CustomSearchBarView(
-                    onSearchSubmit: wlPresenter.searchLocations
+                    onSearchSubmit: wlPresenter.onSearchLocationButtonClicked
                 )
                 .padding(.top)
                 .foregroundStyle(.white)

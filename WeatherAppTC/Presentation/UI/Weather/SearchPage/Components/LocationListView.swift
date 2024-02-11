@@ -35,7 +35,7 @@ struct LocationListView: View {
                 .foregroundStyle(.white)
                 .onTapGesture {
                     self.onItemTapped(location)
-                    locationListPresenter.setCurrentLocation(location: location)
+                    locationListPresenter.onLocationItemTapped(location)
                     dismiss()
                 }
             }
