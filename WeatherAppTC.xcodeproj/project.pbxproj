@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		78025C1D2B793469009C3445 /* WeatherPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78025C1C2B793469009C3445 /* WeatherPresenter.swift */; };
 		781591272B5878B600F0ECC8 /* WeatherAppTCApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781591262B5878B600F0ECC8 /* WeatherAppTCApp.swift */; };
 		781591292B5878B600F0ECC8 /* WeatherPreviewPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781591282B5878B600F0ECC8 /* WeatherPreviewPageView.swift */; };
 		7815912B2B5878B700F0ECC8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7815912A2B5878B700F0ECC8 /* Assets.xcassets */; };
@@ -62,6 +63,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		78025C1C2B793469009C3445 /* WeatherPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherPresenter.swift; sourceTree = "<group>"; };
 		781591232B5878B600F0ECC8 /* WeatherAppTC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherAppTC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		781591262B5878B600F0ECC8 /* WeatherAppTCApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppTCApp.swift; sourceTree = "<group>"; };
 		781591282B5878B600F0ECC8 /* WeatherPreviewPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherPreviewPageView.swift; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 			isa = PBXGroup;
 			children = (
 				785BE7CE2B68FCFE00AF8858 /* WeatherLocationListPresenter.swift */,
+				78025C1C2B793469009C3445 /* WeatherPresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -595,6 +598,7 @@
 				78B1C1E42B75115B00774FF9 /* NavSearchButtonView.swift in Sources */,
 				78EE59D82B71557E000D6888 /* Pressure.swift in Sources */,
 				78F8FEE52B5FAA1F007819B3 /* WeatherDataView.swift in Sources */,
+				78025C1D2B793469009C3445 /* WeatherPresenter.swift in Sources */,
 				785BE7D72B6F980E00AF8858 /* Double+roundTo.swift in Sources */,
 				781591292B5878B600F0ECC8 /* WeatherPreviewPageView.swift in Sources */,
 				78EE59E32B727A16000D6888 /* Metric.swift in Sources */,
