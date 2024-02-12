@@ -8,6 +8,7 @@
 import Foundation
 
 struct WeatherDetailModel {
+    // Properties representing the label, content, and system image associated with the weather detail
     let label: String
     let content: String
     let systemImage: String

@@ -9,6 +9,7 @@ import Foundation
 
 struct WeatherIconProvider {
     
+    // Method to get the weather icon for a given weather code
     func getWeatherIcon(for weatherCode: Int) -> String {
         switch weatherCode {
         case 1:
