@@ -9,7 +9,7 @@ import SwiftUI
 
 
 struct SearchPageView: View {
-    @ObservedObject var wlPresenter: WeatherLocationListPresenter
+    @ObservedObject var presenter: WeatherLocationListPresenter
     
     var body: some View {
         ZStack {
@@ -18,12 +18,11 @@ struct SearchPageView: View {
             
             VStack {
                 Spacer()
-                
                 DynamicGradientWeatherContainer(
                     content: LocationListView(
-                        locationListPresenter: wlPresenter,
-                        locationList: wlPresenter.locationList,
-                        onItemTapped: wlPresenter.onLocationItemTapped
+                        locationListPresenter: presenter,
+                        locationList: presenter.locationList,
+                        onItemTapped: presenter.onLocationItemTapped
                     ),
                     maxHeight: 550,
                     cornerRadius: .init(
@@ -36,7 +35,7 @@ struct SearchPageView: View {
                 Spacer()
                 
                 CustomSearchBarView(
-                    onSearchSubmit: wlPresenter.onSearchLocationButtonClicked
+                    onSearchSubmit: presenter.onSearchLocationButtonClicked
                 )
                 .padding(.top)
                 .foregroundStyle(.white)

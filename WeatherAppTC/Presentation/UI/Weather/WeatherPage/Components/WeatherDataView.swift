@@ -92,6 +92,7 @@ struct WeatherDataView: View {
             .padding(.top, 50)
             .padding(.horizontal)
             
+            /*
             if presenter.isLoading {
                 ZStack {
                     Color.black
@@ -103,6 +104,7 @@ struct WeatherDataView: View {
                 }
                 .frame(width: 200, height: 100)
             }
+             */
         }
         .safeAreaPadding(.vertical, 80)
     }

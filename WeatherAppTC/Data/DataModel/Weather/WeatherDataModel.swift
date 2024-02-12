@@ -8,7 +8,7 @@
 import Foundation
 
 class WeatherDataModel {    
-    func getTemperature(
+    func fetchWeather(
         locationKey: String,
         completion: @escaping ([Weather]) -> Void
     ) {

@@ -20,7 +20,7 @@ class LocationListInteracor {
         locationKey key: String,
         completion: @escaping () -> Void
     ) {
-        model.getLocation(cityName: key) { locations, success  in
+        model.fetchLocations(cityName: key) { locations, success  in
             self.locationList = locations
             completion()
         }

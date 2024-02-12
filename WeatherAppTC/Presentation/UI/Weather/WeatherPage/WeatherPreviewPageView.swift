@@ -47,7 +47,7 @@ struct WeatherPreviewPageView: View {
             }
         }
         .sheet(isPresented: $isSearchBtnClicked, content: {
-            SearchPageView(wlPresenter: presenter)
+            SearchPageView(presenter: presenter)
         })
         .ignoresSafeArea()
     }

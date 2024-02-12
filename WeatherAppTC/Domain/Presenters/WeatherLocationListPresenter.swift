@@ -6,20 +6,19 @@
 //
 
 import Foundation
-import Combine
 
 class WeatherLocationListPresenter: ObservableObject {
+    // Published properties for weather, selected location, location list, and loading state.
     @Published private var weatherList: Weather?
     @Published private var selectedLocation: Location?
+    @Published var locationList: [Location] 
     
-    @Published var locationList: [Location]
-    
-    @Published var isLoading: Bool = true
-    
+    // Dependencies for interacting with weather and location data.
     private let weatherIconProvider: WeatherIconProvider
-    private let locationInteracotr: LocationListInteracor
+    private let locationInteractor: LocationListInteracor
     private let weatherInteractor: WeatherInteractor
     
+    // Initialize the presenter with required dependencies.
     init(
         _ locationInteractor: LocationListInteracor,
         _ weatherInteractor: WeatherInteractor
@@ -27,7 +26,7 @@ class WeatherLocationListPresenter: ObservableObject {
         self.locationList = []
         
         self.weatherIconProvider = WeatherIconProvider()
-        self.locationInteracotr = locationInteractor
+        self.locationInteractor = locationInteractor
         self.weatherInteractor = weatherInteractor
     }
     
@@ -37,52 +36,61 @@ class WeatherLocationListPresenter: ObservableObject {
         }
         return "unknown"
     }
+    
     var weatherTextString: String {
         if let weatherText = weatherList?.weatherText {
             return weatherText
         }
         return "unknown"
     }
+    
     var windSpeedString: String {
         if let windSpeed = weatherList?.wind?.speed.metric.value {
             return "\(Int(windSpeed.rounded())) m/s"
         }
         return "unknown"
     }
+    
     var selectedLocName: String {
         if let localizedName = selectedLocation?.localizedName {
             return localizedName
         }
         return "unknown"
     }
+    
     var pressureString: String {
         if let pressure = weatherList?.pressure.metric.value {
             return "\(Int(pressure)) kPal"
         }
         return "unknwon"
     }
+    
     var uvIndexString: String {
         if let uvIndex = weatherList?.uvIndex {
             return "\(uvIndex)"
         }
         return "unknown"
     }
+    
     var feelsLikeTempString: String {
         if let flTemp = weatherList?.apparentTemperature.metric.value {
             return "Feels like \(Int(flTemp))°C"
         }
         return "unknown"
     }
+    
     var weatherURLLinkString: String {
         if let urlLink = weatherList?.urlLink {
             return urlLink
         }
         return ""
     }
+    
     var weatherSystemImage: String {
         guard let weatherIcon = weatherList?.weatherIcon else { return "" }
         return weatherIconProvider.getWeatherIcon(for: Int(weatherIcon))
     }
+    
     var weatherDetailList: [WeatherDetailModel] {
         let result = [
             WeatherDetailModel(
@@ -100,54 +108,54 @@ class WeatherLocationListPresenter: ObservableObject {
         ]
         return result
     }
+    
     var locationLocName: String {
         guard let selectedLocationName = selectedLocation?.localizedName else { return "" }
         return selectedLocationName
     }
-    
 }
 
-
+// Extension containing methods for interacting with the presenter.
 extension WeatherLocationListPresenter {
+    // Method called when a location item is tapped.
     func onLocationItemTapped(_ location: Location) {
         setWeather(location)
         setCurrentLocation(location: location)
     }
     
+    // Method called when the search location button is clicked.
     func onSearchLocationButtonClicked(_ localizedName: String) {
         setLocationsList(for: localizedName)
     }
     
+    // Method to check if a location is selected.
     func isLocationSelected() -> Bool {
-        if selectedLocation == nil {
-            return false
-        }
-        return true
+        selectedLocation != nil
     }
 }
 
+// MARK: - Private Methods
 
 extension WeatherLocationListPresenter {
     private func setLocationsList(for localizedName: String) {
-        locationInteracotr.searchLocations(locationKey: localizedName) {
-            guard let locationList = self.locationInteracotr.locationList else { return }
+        locationInteractor.searchLocations(locationKey: localizedName) { [weak self] in
+            guard let locationList = self?.locationInteractor.locationList else { return }
             DispatchQueue.main.async {
-                self.locationList = locationList
+                self?.locationList = locationList
             }
         }
     }
     
     private func setWeather(_ location: Location) { // TODO: Async func
-        self.weatherInteractor.setWeather(location) {
-            guard let weatherList = self.weatherInteractor.weatherList else { return }
+        self.weatherInteractor.setWeather(location) { [weak self] in
+            guard let weatherList = self?.weatherInteractor.weatherList else { return }
             DispatchQueue.main.async {
-                self.weatherList = weatherList
+                self?.weatherList = weatherList
             }
-            self.isLoading = self.weatherInteractor.isLoading
         }
     }
     
     private func setCurrentLocation(location: Location) {
-        self.selectedLocation = location
+        selectedLocation = location
     }
 }

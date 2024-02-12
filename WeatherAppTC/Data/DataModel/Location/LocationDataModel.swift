@@ -10,19 +10,19 @@ import Foundation
 class LocationDataModel {
     var locations: [Location]?
     
-    func getLocation(cityName: String, completion: @escaping ([Location], Bool) -> Void) {
+    func fetchLocations(cityName: String, completion: @escaping ([Location]?, Error?) -> Void) {
         let query = cityName
-        let accuweatherEndpoint = "https://dataservice.accuweather.com/locations/v1/cities/autocomplete"
+        let accuweatherEndpoint = Constants.API.Endpoints.locations.rawValue
         let parameters = ["apikey": Constants.API.API_KEY, "q": query]
 
         APIService().fetchData(from: accuweatherEndpoint, parameters: parameters, responseType: [Location].self) { result in
             switch result {
             case .success(let cities):
                 DispatchQueue.main.async {
-                    completion(cities, true)
+                    completion(cities, nil)
                 }
             case .failure(let error):
-                completion([], false)
+                completion(nil, error)
             }
         }
     }

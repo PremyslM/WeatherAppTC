@@ -24,7 +24,7 @@ class WeatherInteractor {
         _ location: Location,
         completion: @escaping () -> Void
     ) {
-        model.getTemperature(locationKey: location.key) { weatherList in
+        model.fetchWeather(locationKey: location.key) { weatherList in
             self.weatherList = weatherList.first
             completion()
         }
