@@ -91,20 +91,6 @@ struct WeatherDataView: View {
             }
             .padding(.top, 50)
             .padding(.horizontal)
-            
-            /*
-            if presenter.isLoading {
-                ZStack {
-                    Color.black
-                    VStack {
-                        Text("Is loading")
-                            .foregroundStyle(.white)
-                        ProgressView()
-                    }
-                }
-                .frame(width: 200, height: 100)
-            }
-             */
         }
         .safeAreaPadding(.vertical, 80)
     }

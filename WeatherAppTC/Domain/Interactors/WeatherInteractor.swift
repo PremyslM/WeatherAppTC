@@ -8,18 +8,13 @@
 import Foundation
 
 class WeatherInteractor {
-    var weatherList: Weather? = nil {
-        didSet {
-            isLoading = false
-        }
-    }
-    var isLoading: Bool = true
     private let model: WeatherDataModel
+    var weatherList: Weather?
     
     init(model: WeatherDataModel) {
         self.model = model
     }
-    
+
     func setWeather(
         _ location: Location,
         completion: @escaping () -> Void
