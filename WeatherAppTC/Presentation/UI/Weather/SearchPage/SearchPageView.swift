@@ -45,3 +45,15 @@ struct SearchPageView: View {
         
     }
 }
+
+struct LoadingTextView: View {
+    var body: some View {
+        HStack {
+            Text("Loading ...")
+                .font(.system(size: 24, weight: .semibold))
+            
+            ProgressView()
+                .progressViewStyle(.circular)
+        }
+    }
+}

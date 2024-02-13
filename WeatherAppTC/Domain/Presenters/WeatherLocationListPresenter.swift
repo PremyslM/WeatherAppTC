@@ -34,28 +34,28 @@ class WeatherLocationListPresenter: ObservableObject {
         if let temp = weatherList?.temperature.metric.value {
             return "\(Int(temp.rounded()))°"
         }
-        return "unknown"
+        return "loading..."
     }
     
     var weatherTextString: String {
         if let weatherText = weatherList?.weatherText {
             return weatherText
         }
-        return "unknown"
+        return "loading..."
     }
     
     var windSpeedString: String {
         if let windSpeed = weatherList?.wind?.speed.metric.value {
             return "\(Int(windSpeed.rounded())) m/s"
         }
-        return "unknown"
+        return "loading..."
     }
     
     var selectedLocName: String {
         if let localizedName = selectedLocation?.localizedName {
             return localizedName
         }
-        return "unknown"
+        return "loading..."
     }
     
     var pressureString: String {
@@ -69,14 +69,14 @@ class WeatherLocationListPresenter: ObservableObject {
         if let uvIndex = weatherList?.uvIndex {
             return "\(uvIndex)"
         }
-        return "unknown"
+        return "loading..."
     }
     
     var feelsLikeTempString: String {
         if let flTemp = weatherList?.apparentTemperature.metric.value {
             return "Feels like \(Int(flTemp))°C"
         }
-        return "unknown"
+        return "loading..."
     }
     
     var weatherURLLinkString: String {
