@@ -28,7 +28,7 @@ struct WeatherDataView: View {
                                     .fontWeight(.semibold)
                                 Image(systemName: "location.magnifyingglass")
                             }
-                            Text(presenter.locationLocName)
+                            Text(presenter.locationCountryName)
                                 .font(.footnote)
                         }
                         .padding()

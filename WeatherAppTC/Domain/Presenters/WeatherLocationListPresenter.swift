@@ -109,8 +109,8 @@ class WeatherLocationListPresenter: ObservableObject {
         return result
     }
     
-    var locationLocName: String {
-        guard let selectedLocationName = selectedLocation?.localizedName else { return "" }
+    var locationCountryName: String {
+        guard let selectedLocationName = selectedLocation?.country.localizedName else { return "" }
         return selectedLocationName
     }
 }
@@ -119,13 +119,15 @@ class WeatherLocationListPresenter: ObservableObject {
 extension WeatherLocationListPresenter {
     // Method called when a location item is tapped.
     func onLocationItemTapped(_ location: Location) {
+        resetSelectedData()
         setWeather(location)
         setCurrentLocation(location: location)
     }
     
     // Method called when the search location button is clicked.
     func onSearchLocationButtonClicked(_ localizedName: String) {
-        setLocationsList(for: localizedName)
+        let trimmedLocName: String = localizedName.trimmingCharacters(in: .whitespaces)
+        setLocationsList(for: trimmedLocName)
     }
     
     // Method to check if a location is selected.
@@ -144,6 +146,11 @@ extension WeatherLocationListPresenter {
                 self?.locationList = locationList
             }
         }
+    }
+    
+    private func resetSelectedData() {
+        self.selectedLocation = nil
+        self.weatherList = nil
     }
     
     private func setWeather(_ location: Location) { // TODO: Async func
