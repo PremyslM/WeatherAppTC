@@ -11,7 +11,9 @@ class WeatherLocationListPresenter: ObservableObject {
     // Published properties for weather, selected location, location list, and loading state.
     @Published private var weatherList: Weather?
     @Published private var selectedLocation: Location?
-    @Published var locationList: [Location] 
+    
+    @Published private(set) var locationList: [Location]
+    @Published private(set) var isSubmitTapped: Bool
     
     // Dependencies for interacting with weather and location data.
     private let weatherIconProvider: WeatherIconProvider
@@ -24,6 +26,7 @@ class WeatherLocationListPresenter: ObservableObject {
         _ weatherInteractor: WeatherInteractor
     ) {
         self.locationList = []
+        self.isSubmitTapped = false
         
         self.weatherIconProvider = WeatherIconProvider()
         self.locationInteractor = locationInteractor
@@ -126,6 +129,7 @@ extension WeatherLocationListPresenter {
     
     // Method called when the search location button is clicked.
     func onSearchLocationButtonClicked(_ localizedName: String) {
+        isSubmitTapped = true
         let trimmedLocName: String = localizedName.trimmingCharacters(in: .whitespaces)
         setLocationsList(for: trimmedLocName)
     }

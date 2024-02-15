@@ -10,7 +10,7 @@ import SwiftUI
 struct CustomSearchBarView: View {
     @State private var searchText: String = ""
     @State private var isEditing: Bool = false
-
+    
     let onSearchSubmit: (String) -> Void
 
     var body: some View {

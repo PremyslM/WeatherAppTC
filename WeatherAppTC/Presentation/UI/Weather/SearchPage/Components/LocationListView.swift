@@ -21,7 +21,7 @@ struct LocationListView: View {
     }
     
     var body: some View {
-        if presenter.locationList.isEmpty {
+        if presenter.locationList.isEmpty && presenter.isSubmitTapped {
             LoadingTextView()
         } else {
             List {

@@ -34,7 +34,7 @@ struct SearchPageView: View {
                 )
                 Spacer()
                 
-                CustomSearchBarView(
+                CustomSearchBarView(                    
                     onSearchSubmit: presenter.onSearchLocationButtonClicked
                 )
                 .padding(.top)
